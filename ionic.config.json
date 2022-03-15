@@ -1,0 +1,7 @@
+{
+  "name": "extravios-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
