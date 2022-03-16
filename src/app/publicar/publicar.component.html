@@ -1,0 +1,65 @@
+<div class="m-4 bg-white p-5 rounded-md text-black">
+  <div class="flex justify-center items-center">
+    <ion-label>Busco un objeto</ion-label>
+    <ion-toggle [(ngModel)]="tipo" class="bg-gray-200 mx-2 rounded-xl" color="warning"></ion-toggle>
+    <ion-label>Encontre un objeto</ion-label>
+  </div>
+  <div class="flex flex-col mt-5 justify-center items-center">
+    <ion-label>¿Conoces el código del estudiante?</ion-label>
+    <div>
+      <ion-label>No</ion-label>
+      <ion-toggle class="bg-gray-200 mx-2 rounded-xl" color="warning"></ion-toggle>
+      <ion-label>Si</ion-label>
+    </div>
+  </div>
+  <div class="mb-3">
+    <ion-label>Código del estudiante:</ion-label>
+    <ion-input class="bg-gray-200"></ion-input>
+  </div>
+  <div>
+    <div class="mb-3">
+      <ion-label>Descripcion corta:</ion-label>
+      <ion-input [(ngModel)]="publicacion.descObjetoC" class="bg-gray-200"></ion-input>
+    </div>
+    <div class="mb-3">
+      <ion-label>Descripción larga:</ion-label>
+      <ion-input [(ngModel)]="publicacion.descDetallada" class="bg-gray-200"></ion-input>
+    </div>
+    <div class="mb-3">
+      <ion-label>Etiquetas para busqueda (por lo menos, agregar una):</ion-label>
+      <ion-input class="bg-gray-200 mb-1" placeholder="Etiqueta #1"></ion-input>
+      <ion-input class="bg-gray-200 mb-1" placeholder="Etiqueta #2"></ion-input>
+      <ion-input class="bg-gray-200 mb-1" placeholder="Etiqueta #3"></ion-input>
+      <ion-input class="bg-gray-200 mb-1" placeholder="Etiqueta #4"></ion-input>
+      <ion-input class="bg-gray-200 mb-1" placeholder="Etiqueta #5"></ion-input>
+    </div>
+    <div class="mb-3">
+      <ion-label>Categoria del objeto:</ion-label>
+      <ion-select color="light" interface="popover" class="bg-gray-200" okText="Listo" cancelText="Cancelar">
+        <ion-select-option value="1" class="text-black">Electronicos</ion-select-option>
+        <ion-select-option value="2" class="text-black">Documentos</ion-select-option>
+        <ion-select-option value="3" class="text-black">Otros</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="mb-3">
+      <ion-label>Lugar encontrado / extraviado:</ion-label>
+      <ion-input [(ngModel)]="publicacion.lugar" class="bg-gray-200"></ion-input>
+    </div>
+    <div class="mb-3 flex flex-col">
+      <ion-label>Foto del articulo:</ion-label>
+      <div class="flex items-center">
+        <input type="file">
+        <ion-icon class="text-2xl mx-2" icon="camera"></ion-icon>
+      </div>
+    </div>
+    <div class="mb-3 flex items-center">
+      <ion-label>Mostrar datos de contacto en publicación:</ion-label>
+      <ion-label class="ml-2">No</ion-label>
+      <ion-toggle [(ngModel)]="mostrar" class="bg-gray-200 mx-2 rounded-xl" color="warning"></ion-toggle>
+      <ion-label>Si</ion-label>
+    </div>
+    <div class="flex justify-center">
+      <ion-button (click)="guardarPublicacion()" color="warning" class="w-full">Publicar</ion-button>
+    </div>
+  </div>
+</div>
