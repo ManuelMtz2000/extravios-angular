@@ -7,6 +7,8 @@ import { AyudaComponent } from './views/ayuda/ayuda.component';
 import { PublicacionesComponent } from './views/publicaciones/publicaciones.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegistroComponent } from './views/registro/registro.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { UsuarioComponent } from './views/usuario/usuario.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,10 @@ const routes: Routes = [
   {
     path: 'registro',
     component: RegistroComponent
+  },
+  {
+    path: 'tabs/perfil/usuario',
+    component: UsuarioComponent
   },
   {
     path: 'tabs/perfil/acerca',

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SlidesComponent implements OnInit {
-
+  ruta = '../../..';
   slideOpts = {
     initialSlide: 0,
     speed: 400

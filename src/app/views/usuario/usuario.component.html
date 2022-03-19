@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <div class="flex items-center">
+      <ion-item color="white" class="text-black hover:bg-gray-200" button routerLink='..'>
+        <ion-label>
+          <ion-icon icon="arrow-undo-circle-outline" class="text-4xl text-orange-800"></ion-icon>
+        </ion-label>
+      </ion-item>
+      <ion-title class="text-center">Perfil de usuario</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="p-5 m-4 rounded-md bg-white">
+    <div>
+      <div class="flex flex-col md:flex-row w-full items-center space-x-4">
+        <div (mouseenter)="botonImagen = true;" (mouseleave)="botonImagen = false;" class="md:rounded-full transition hover:opacity-70 flex justify-center items-center" [ngStyle]="{
+        'background-image': 'url(../../../assets/gigapro.jpeg)', 
+        'width': '200px', 
+        'height': '200px',
+        'background-repeat': 'no-repeat',
+        'background-size': 'cover',
+        'background-position': 'center'
+      }">
+          <div *ngIf="botonImagen" class="flex flex-col justify-center items-center">
+            <input required class="opacity-0" type="file">
+            <ion-icon class="text-2xl mx-2 absolute" icon="camera"></ion-icon>
+          </div>
+        </div>
+        <h1 class="text-orange-800 font-bold text-4xl text-center md:text-left">Mario Duran Manzano</h1>
+      </div>
+      <div class="mt-8 space-y-2">
+        <hr>
+        <div class="flex justify-between">
+          <h1 class="text-black text-2xl mt-2">Información de contacto:</h1>
+          <ion-button (click)="bandera = !bandera;" color="warning">
+            <ion-icon icon="create-outline"></ion-icon>
+          </ion-button>
+        </div>
+        <ion-textarea [ngStyle]="bandera ? {'pointer-events': 'none', 'background-color': '#B1B1B1'} : {'pointer-events': 'all'}" class="text-black bg-gray-200"></ion-textarea>
+        <div class="w-full">
+          <ion-label class="text-black text-2xl">Cambiar contraseña:</ion-label>
+          <ion-input class="bg-gray-200 text-black my-2" placeholder="Contraseña anterior" type="password"></ion-input>
+          <div class="flex space-x-2">
+            <ion-input class="bg-gray-200 text-black" placeholder="Nueva contraseña" type="password"></ion-input>
+            <ion-input class="bg-gray-200 text-black" placeholder="Confirmar nueva contraseña" type="password"></ion-input>ion-input>
+          </div>
+        </div>
+        <ion-button color="warning" class="mt-2">Guardar</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

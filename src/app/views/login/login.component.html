@@ -1,3 +1,32 @@
-<p>
-  login works!
-</p>
+<ion-header>
+  <ion-toolbar color="dark">
+    <div class="flex">
+      <ion-img class="w-20" [src]="ruta + 'assets/logo_transparente.png'"></ion-img>
+      <ion-title class="text-center">Iniciar sesión</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="fondo">
+  <div class="flex justify-center items-center h-full text-black">
+    <div class="w-1/2 p-3 bg-orange-300 rounded-lg border border-orange-300 shadow-lg">
+      <div class="flex justify-center">
+        <ion-button (click)="tipo = false;" [ngClass]="{'border-2 rounded-md border-orange-600': tipo === false}" color="warning">Estudiante</ion-button>
+        <ion-button (click)="tipo = true;" [ngClass]="{'border-2 rounded-md border-orange-600': tipo}" color="warning">Externo</ion-button>
+      </div>
+      <div>
+        <div class="mb-2">
+          <ion-label *ngIf="tipo === false;">Código de estudiante:</ion-label>
+          <ion-label *ngIf="tipo">Correo electrónico:</ion-label>
+          <ion-input *ngIf="tipo === false;" type="number" class="bg-gray-200 rounded-md"></ion-input>
+          <ion-input *ngIf="tipo" type="text" class="bg-gray-200 rounded-md"></ion-input>
+        </div>
+        <div class="mb-2">
+          <ion-label>Contraseña:</ion-label>
+          <ion-input type="password" class="bg-gray-200 rounded-md"></ion-input>
+        </div>
+      </div>
+      <ion-button class="w-full" color="warning" routerLink="/tabs/inicio">Entrar</ion-button>
+      <div class="mt-2 flex justify-center space-x-1"><p>¿No estás registrado?</p><a routerLink="../registro" class="text-orange-800 font-bold transition hover:underline">Hazlo aquí</a></div>
+    </div>
+  </div>
+</ion-content>

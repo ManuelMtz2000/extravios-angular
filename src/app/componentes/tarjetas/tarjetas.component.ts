@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tarjetas.component.scss'],
 })
 export class TarjetasComponent implements OnInit {
-
+  ruta = '../../..';
   constructor() { }
 
   ngOnInit() {}

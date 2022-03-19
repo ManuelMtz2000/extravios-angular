@@ -1,0 +1,8 @@
+.fondo {
+    --background: url(../../../assets/extraviosFondo.png) 0 100% no-repeat;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}

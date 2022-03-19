@@ -13,6 +13,8 @@ import { PublicacionesComponent } from './app/views/publicaciones/publicaciones.
 import { LoginComponent } from './app/views/login/login.component';
 import { RegistroComponent } from './app/views/registro/registro.component';
 import { FormsModule } from '@angular/forms';
+import { PerfilComponent } from './app/perfil/perfil.component';
+import { UsuarioComponent } from './app/views/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     PublicacionesComponent,
     TarjetasComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    UsuarioComponent
   ],
   entryComponents: [
   ],
