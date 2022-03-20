@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <div class="flex">
+      <ion-item color="white" class="text-black hover:bg-gray-200" button routerLink='..'>
+        <ion-label>
+          <ion-icon icon="arrow-undo-circle-outline" class="text-4xl text-orange-800"></ion-icon>
+        </ion-label>
+      </ion-item>
+      <ion-title class="text-center">Reportar publicación</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div class="m-4 bg-white p-5 rounded-md text-black">
+    <h1>Información de la publicación: </h1>
+    <h2>Descripción corta: </h2>
+    <h2>Imagen del objeto: </h2>
+    <h2>Nombre del reportado: </h2>
+    <h2>Descripción del reporte: </h2>
+    <ion-button (click)="show = true" color="danger">Reportar</ion-button>
+    <ion-modal [isOpen]="show" class="text-black" breakpoints="[0.15, 0.5, 1]" initialBreakpoint="0.15">
+      <ng-template>
+        <div class="mt-4 flex flex-col justify-center items-center">
+          ¿Estás seguro de reportar esta publicación?
+          <div class="flex">
+            <ion-button color="danger">Si</ion-button>
+            <ion-button color="warning" (click)="show = false">No</ion-button>
+          </div>
+        </div>
+      </ng-template>
+    </ion-modal>
+  </div>
+</ion-content>

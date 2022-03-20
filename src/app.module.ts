@@ -15,6 +15,7 @@ import { RegistroComponent } from './app/views/registro/registro.component';
 import { FormsModule } from '@angular/forms';
 import { PerfilComponent } from './app/perfil/perfil.component';
 import { UsuarioComponent } from './app/views/usuario/usuario.component';
+import { ReportesComponent } from './app/views/reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UsuarioComponent } from './app/views/usuario/usuario.component';
     TarjetasComponent,
     LoginComponent,
     RegistroComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ReportesComponent
   ],
   entryComponents: [
   ],

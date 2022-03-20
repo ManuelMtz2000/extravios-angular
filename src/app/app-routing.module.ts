@@ -9,6 +9,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegistroComponent } from './views/registro/registro.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
+import { ReportesComponent } from './views/reportes/reportes.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'registro',
     component: RegistroComponent
+  },
+  {
+    path: 'tabs/inicio/reportar/:id',
+    component: ReportesComponent
   },
   {
     path: 'tabs/perfil/usuario',
