@@ -3,20 +3,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
-import { InicioComponentModule } from '../inicio/inicio.module';
 import { RouterModule } from '@angular/router';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { SlidesComponent } from '../componentes/slides/slides.component';
+import { InicioComponent } from '../inicio/inicio.component';
+import { CardComponent } from '../componentes/card/card.component';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    InicioComponentModule,
     Tab1PageRoutingModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page, InicioComponent, SlidesComponent, CardComponent]
 })
 export class Tab1PageModule {}

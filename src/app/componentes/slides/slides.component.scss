@@ -1,0 +1,10 @@
+.img {
+    height: 250px;
+}
+.perfil {
+    height: 30px;
+    width: 30px;
+}
+ion-img::part(image) {
+    border-radius: 150px;
+  }

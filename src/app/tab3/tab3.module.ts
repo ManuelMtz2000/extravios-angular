@@ -19,6 +19,6 @@ import { PerfilComponent } from '../perfil/perfil.component';
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
   ],
-  declarations: [Tab3Page, PerfilComponent,SimpleCardComponent]
+  declarations: [Tab3Page, PerfilComponent, SimpleCardComponent]
 })
 export class Tab3PageModule {}

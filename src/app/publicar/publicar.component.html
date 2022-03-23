@@ -48,7 +48,7 @@
     <div class="mb-3 flex flex-col">
       <ion-label>Foto del articulo:</ion-label>
       <div class="flex items-center">
-        <input type="file">
+        <input type="file" (change)="getImage($event)"> 
         <ion-icon class="text-2xl mx-2" icon="camera"></ion-icon>
       </div>
     </div>

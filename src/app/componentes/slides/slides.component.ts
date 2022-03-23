@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Publicacion } from 'src/app/interfaces/Publicacion';
 
 @Component({
   selector: 'app-slides',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class SlidesComponent implements OnInit {
-  @Input() enlaces: any[];
+  @Input() publicaciones: Publicacion[];
   ruta = '../../..';
   slideOpts = {
     initialSlide: 0,

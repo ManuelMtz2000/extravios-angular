@@ -14,4 +14,8 @@ export class PublicacionesService {
   guardarPublicacion(publicacion: FormData){
     return this.httpClient.post(API_ENDPOINT + '/publicaciones', publicacion);
   }
+
+  obtenerPublicaciones(){
+    return this.httpClient.get(API_ENDPOINT + '/publicaciones');
+  }
 }
