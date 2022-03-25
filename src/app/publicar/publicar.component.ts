@@ -20,6 +20,7 @@ export class PublicarComponent implements OnInit {
     fotoObjeto: '',
     descObjetoC: '',
     descDetallada: '',
+    autorPublicacion: '',
     lugar: ''
   };
   constructor(private publicacionesService: PublicacionesService) { }

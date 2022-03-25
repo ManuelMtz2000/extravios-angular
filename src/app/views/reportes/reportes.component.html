@@ -13,11 +13,16 @@
 <ion-content fullscreen>
   <div class="m-4 bg-white p-5 rounded-md text-black">
     <h1>Información de la publicación: </h1>
-    <h2>Descripción corta: </h2>
-    <h2>Imagen del objeto: </h2>
-    <h2>Nombre del reportado: </h2>
-    <h2>Descripción del reporte: </h2>
-    <ion-button (click)="show = true" color="danger">Reportar</ion-button>
+    <div class="flex flex-col md:flex-row mt-4 space-y-4 space-x-2">
+      <ion-img [src]="publicacion?.fotoObjeto" style="width: 300px; height: 300px"></ion-img>
+      <div>
+        <h2>Descripción corta: {{ publicacion?.descObjetoC }}</h2>
+        <h2>Nombre del reportado: {{ publicacion?.autorPublicacion }}</h2>
+        <h2>Motivo del reporte: </h2>
+        <ion-textarea class="bg-gray-200"></ion-textarea>
+        <ion-button (click)="show = true" color="danger">Reportar</ion-button>
+      </div>
+    </div>
     <ion-modal [isOpen]="show" class="text-black" breakpoints="[0.15, 0.5, 1]" initialBreakpoint="0.15">
       <ng-template>
         <div class="mt-4 flex flex-col justify-center items-center">

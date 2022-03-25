@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Publicacion } from 'src/app/interfaces/Publicacion';
+import { PublicacionesService } from 'src/app/servicios/publicaciones.service';
 
 @Component({
   selector: 'app-reportes',
@@ -7,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportesComponent implements OnInit {
   show = false;
-  constructor() { }
+  publicacion !: Publicacion;
+  id !: any;
+  constructor(private publicacionesService: PublicacionesService, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+      this.id = params.get('id');
+      if(this.id){
+        this.publicacionesService.obtenerPublicacion(this.id).subscribe((data: any) => {
+          this.publicacion = data;
+        }, (error) => {
+          console.log(error);
+        });
+      }
+    });
+  }
 
   ngOnInit() {}
 

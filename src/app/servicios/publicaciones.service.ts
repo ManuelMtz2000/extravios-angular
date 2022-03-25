@@ -18,4 +18,11 @@ export class PublicacionesService {
   obtenerPublicaciones(){
     return this.httpClient.get(API_ENDPOINT + '/publicaciones');
   }
+
+  obtenerPublicacion(id: any){
+    return this.httpClient.get(API_ENDPOINT + '/publicaciones/' + id);
+  }
+
+  // reportarPublicacion(id: number){
+  // }
 }

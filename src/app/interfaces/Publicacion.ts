@@ -5,5 +5,6 @@ export interface Publicacion {
     fotoObjeto: string;
     descObjetoC: string;
     descDetallada: string;
+    autorPublicacion: any;
     lugar: string;
 }
