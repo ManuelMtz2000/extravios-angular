@@ -1,0 +1,20 @@
+<ion-button (click)="show = true;" color="warning">Detalles</ion-button>
+  <ion-modal [isOpen]="show" class="text-black" breakpoints="[0.1, 0.90, 1]" initialBreakpoint="0.90">
+  <ng-template>
+    <div class="mt-4 flex flex-col p-2 border-t border-orange-700 bg-orange-100">
+      <h1 class="font-bold text-2xl text-center mb-4">Información del objeto</h1>
+      <div class="flex justify-center mb-4">
+        <ion-img [src]="publicacion.fotoObjeto" style="width: 300px; height: 300px"></ion-img>
+      </div>
+      <div class="p-2 border-t border-orange-700">
+        <p>Descripción corta: {{ publicacion.descObjetoC }}</p>
+        <p>Descripción detallada: {{ publicacion.descDetallada }}</p>
+        <p>Lugar de extravio / encontrado: {{ publicacion.lugar }}</p>
+      </div>
+      <div class="flex justify-center">
+        <ion-button color="danger">¡Es mío!</ion-button>
+        <ion-button color="warning" (click)="show = false">Regresar</ion-button>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>

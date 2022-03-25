@@ -2,7 +2,7 @@
   <ion-slides [options]="slideOpts">
     <ion-slide *ngFor="let publicacion of publicaciones" class="flex flex-col-reverse">
       <div class="flex justify-center">
-        <ion-button color="warning">Detalles</ion-button>
+        <app-modal [publicacion]="publicacion"></app-modal>
         <ion-button color="warning">Es mío</ion-button>
         <ion-button color="danger" [routerLink]="['reportar/',1]">
           <ion-icon icon="warning"></ion-icon>

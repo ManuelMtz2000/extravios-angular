@@ -9,6 +9,7 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { SlidesComponent } from '../componentes/slides/slides.component';
 import { InicioComponent } from '../inicio/inicio.component';
 import { CardComponent } from '../componentes/card/card.component';
+import { ModalComponent } from '../componentes/modal/modal.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { CardComponent } from '../componentes/card/card.component';
     Tab1PageRoutingModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
-  declarations: [Tab1Page, InicioComponent, SlidesComponent, CardComponent]
+  declarations: [Tab1Page, InicioComponent, SlidesComponent, CardComponent, ModalComponent]
 })
 export class Tab1PageModule {}

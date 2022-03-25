@@ -38,7 +38,7 @@
         <div class="mb-5 flex flex-col">
           <ion-label>Foto de identificación oficial:</ion-label>
           <div class="flex items-center">
-            <input required type="file">
+            <input required type="file" (change)="getImage($event)">
             <ion-icon class="text-2xl mx-2" icon="camera"></ion-icon>
           </div>
         </div>
