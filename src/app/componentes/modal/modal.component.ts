@@ -9,8 +9,13 @@ import { Publicacion } from 'src/app/interfaces/Publicacion';
 export class ModalComponent implements OnInit {
   @Input() publicacion!: Publicacion;
   show = false;
+  datos = false;
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.publicacion.mostrarContacto) {
+      this.datos = true;
+    }
+  }
 
 }

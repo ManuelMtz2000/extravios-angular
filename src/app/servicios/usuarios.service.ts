@@ -10,6 +10,10 @@ export class UsuariosService {
 
   constructor(private httpClient: HttpClient) { }
 
+  login(formData: FormData){
+    return this.httpClient.post(API_ENDPOINT + '/auth/login', formData);
+  }
+
   nuevoUsuario(formData: FormData){
     return this.httpClient.post(API_ENDPOINT + '/users', formData);
   }

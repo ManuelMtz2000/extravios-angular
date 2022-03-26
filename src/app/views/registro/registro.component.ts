@@ -15,6 +15,7 @@ export class RegistroComponent implements OnInit {
   contrasenia!: string;
   curp!: string;
   imagen!: any;
+  datos!: string;
   constructor(private userService: UsuariosService, private router: Router) { }
 
   ngOnInit() {}
@@ -29,6 +30,7 @@ export class RegistroComponent implements OnInit {
     formData.append('correo', this.correo);
     formData.append('contrasenia', this.contrasenia);
     formData.append('curp', this.curp);
+    formData.append('datosContacto', this.datos);
     formData.append('Content-Type', 'multipart/form-data');
     formData.append('Accept', 'application/json');
     formData.append('imagen', this.imagen);

@@ -18,14 +18,14 @@
           <ion-label *ngIf="tipo === false;">Código de estudiante:</ion-label>
           <ion-label *ngIf="tipo">Correo electrónico:</ion-label>
           <ion-input *ngIf="tipo === false;" type="number" class="bg-gray-200 rounded-md"></ion-input>
-          <ion-input *ngIf="tipo" type="text" class="bg-gray-200 rounded-md"></ion-input>
+          <ion-input *ngIf="tipo" type="text" [(ngModel)]="correo" class="bg-gray-200 rounded-md"></ion-input>
         </div>
         <div class="mb-2">
           <ion-label>Contraseña:</ion-label>
-          <ion-input type="password" class="bg-gray-200 rounded-md"></ion-input>
+          <ion-input type="password" [(ngModel)]="password" class="bg-gray-200 rounded-md"></ion-input>
         </div>
       </div>
-      <ion-button class="w-full" color="warning" routerLink="/tabs/inicio">Entrar</ion-button>
+      <ion-button class="w-full" color="warning" (click)="login();">Entrar</ion-button>
       <div class="mt-2 flex justify-center space-x-1"><p>¿No estás registrado?</p><a routerLink="../registro" class="text-orange-800 font-bold transition hover:underline">Hazlo aquí</a></div>
     </div>
   </div>
