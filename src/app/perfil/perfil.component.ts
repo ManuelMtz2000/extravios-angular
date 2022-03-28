@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsuariosService } from '../servicios/usuarios.service';
 
 @Component({
   selector: 'app-perfil',
@@ -7,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UsuariosService, private router: Router) {
+    if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
+      this.router.navigate(['entrar']);
+    }
+   }
 
   ngOnInit() {}
+
+  logout(){
+    this.userService.deleteToken();
+    this.router.navigate(['entrar']);
+  }
 
 }

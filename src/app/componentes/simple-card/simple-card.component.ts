@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-simple-card',
@@ -8,8 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SimpleCardComponent implements OnInit {
   @Input() titulo!: string;
   @Input() direccion!: string;
-  constructor() { }
+  constructor(private cookies: CookieService) { }
 
   ngOnInit() {}
-
 }

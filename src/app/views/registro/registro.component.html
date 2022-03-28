@@ -46,6 +46,13 @@
             <ion-icon class="text-2xl mx-2" icon="camera"></ion-icon>
           </div>
         </div>
+        <div class="mb-5 flex flex-col">
+          <ion-label>Foto de perfil (opcional):</ion-label>
+          <div class="flex items-center">
+            <input required type="file" (change)="getPerfil($event)">
+            <ion-icon class="text-2xl mx-2" icon="camera"></ion-icon>
+          </div>
+        </div>
         <div class="flex justify-center">
           <ion-button (click)="registrarUsuario();" color="warning" class="w-full">Registrarse</ion-button>
         </div>

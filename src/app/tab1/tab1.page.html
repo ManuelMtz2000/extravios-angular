@@ -1,10 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
-    <div class="flex">
+    <div class="flex items-center">
       <ion-img src="../../assets/logo_transparente.png" class="w-20"></ion-img>
       <ion-title>
         Inicio
       </ion-title>
+      <div class="mr-4 flex space-x-2 items-center">
+        <div>{{ usuario?.nombre }}</div>
+        <img [src]="usuario?.fotoP" class="perfil rounded-full" alt="">
+      </div>
     </div>
   </ion-toolbar>
 </ion-header>

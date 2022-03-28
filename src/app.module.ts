@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { PerfilComponent } from './app/perfil/perfil.component';
 import { UsuarioComponent } from './app/views/usuario/usuario.component';
 import { ReportesComponent } from './app/views/reportes/reportes.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ReportesComponent } from './app/views/reportes/reportes.component';
   entryComponents: [
   ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

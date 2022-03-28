@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ayuda',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AyudaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+    if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
+      this.router.navigate(['entrar']);
+    }
+   }
 
   ngOnInit() {}
 

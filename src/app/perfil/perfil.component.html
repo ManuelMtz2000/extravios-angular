@@ -3,5 +3,11 @@
   <app-simple-card titulo="Publicaciones" direccion="./publicaciones"></app-simple-card>
   <app-simple-card titulo="Ayuda" direccion="./ayuda"></app-simple-card>
   <app-simple-card titulo="Acerca de la aplicación" direccion="./acerca"></app-simple-card>
-  <app-simple-card titulo="Cerrar sesión" direccion="/"></app-simple-card>
+  
+  <ion-item (click)="logout();" button color="white" class="text-black hover:bg-gray-200">
+    <ion-label>
+      <h1>Cerrar sesión</h1>
+    </ion-label>
+  </ion-item>
+
 </div>

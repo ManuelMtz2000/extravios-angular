@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Publicacion } from 'src/app/interfaces/Publicacion';
 import { PublicacionesService } from 'src/app/servicios/publicaciones.service';
 
@@ -12,7 +12,13 @@ export class ReportesComponent implements OnInit {
   show = false;
   publicacion !: Publicacion;
   id !: any;
-  constructor(private publicacionesService: PublicacionesService, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private publicacionesService: PublicacionesService, private activatedRoute: ActivatedRoute) {
+    if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
+      this.router.navigate(['entrar']);
+    }
+  }
+
+  ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id');
       if(this.id){
@@ -24,7 +30,5 @@ export class ReportesComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {}
 
 }

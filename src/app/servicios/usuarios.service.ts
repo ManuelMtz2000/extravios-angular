@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 const API_ENDPOINT = 'http://localhost:8000/api';
 
@@ -8,7 +9,7 @@ const API_ENDPOINT = 'http://localhost:8000/api';
 })
 export class UsuariosService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private cookies: CookieService) { }
 
   login(formData: FormData){
     return this.httpClient.post(API_ENDPOINT + '/auth/login', formData);
@@ -16,5 +17,18 @@ export class UsuariosService {
 
   nuevoUsuario(formData: FormData){
     return this.httpClient.post(API_ENDPOINT + '/users', formData);
+  }
+
+  setToken(nombre: string,token: string) {
+    localStorage.setItem(nombre, token);
+  }
+
+  getToken(token: string) {
+    return localStorage.getItem(token);
+  }
+
+  deleteToken(){
+    localStorage.removeItem('sesion');
+    localStorage.removeItem('user');
   }
 }

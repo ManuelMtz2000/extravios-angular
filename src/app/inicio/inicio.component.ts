@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Publicacion } from '../interfaces/Publicacion';
+import { Usuario } from '../interfaces/Usuarios';
 import { PublicacionesService } from '../servicios/publicaciones.service';
 
 @Component({
@@ -13,7 +15,12 @@ export class InicioComponent implements OnInit {
     speed: 400
   };
   publicacion !: Publicacion[];
-  constructor(private publicacionesService: PublicacionesService) { }
+  usuario !: Usuario;
+  constructor(private publicacionesService: PublicacionesService, private router: Router) {
+    if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
+      this.router.navigate(['entrar']);
+    }
+   }
 
   ngOnInit() {
     this.publicacionesService.obtenerPublicaciones().subscribe((data: any) => {

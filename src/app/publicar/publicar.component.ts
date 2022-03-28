@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { Publicacion } from '../interfaces/Publicacion';
 import { PublicacionesService } from '../servicios/publicaciones.service';
 
@@ -23,7 +23,11 @@ export class PublicarComponent implements OnInit {
     autorPublicacion: '',
     lugar: ''
   };
-  constructor(private publicacionesService: PublicacionesService) { }
+  constructor(private publicacionesService: PublicacionesService, private router: Router) {
+    if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
+      this.router.navigate(['entrar']);
+    }
+  }
 
   ngOnInit() {}
 
