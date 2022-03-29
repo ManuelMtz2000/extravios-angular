@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from '../interfaces/Usuarios';
 
 @Component({
@@ -8,8 +9,11 @@ import { Usuario } from '../interfaces/Usuarios';
 })
 export class Tab1Page {
   usuario!: Usuario;
-  constructor() {
+  constructor(private router: Router) {
     this.usuario = JSON.parse(localStorage.getItem('user'));
+    if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
+      this.router.navigate(['entrar']);
+    }
   }
 
 }

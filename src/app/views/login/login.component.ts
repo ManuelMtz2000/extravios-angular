@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
       this.sesion = data;
       this.userService.setToken('sesion', this.sesion.token);
       this.userService.setToken('user', JSON.stringify(this.sesion.user));
+      this.correo = '';
+      this.password = '';
       this.router.navigate(['tabs/inicio']);
     }, (error) => {
       console.log(error);
