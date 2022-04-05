@@ -39,4 +39,8 @@ export class UsuariosService {
   nuevaContra(formData: FormData, id: number){
     return this.httpClient.post(API_ENDPOINT + '/users/update/contrasenia/' + id, formData);
   }
+
+  nuevosDatos(formData: FormData, id: number){
+    return this.httpClient.post(API_ENDPOINT + '/users/update/datos/' + id, formData);
+  }
 }

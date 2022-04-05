@@ -29,7 +29,6 @@ export class UsuarioComponent implements OnInit {
       this.router.navigate(['entrar']);
     }
     this.usuario = JSON.parse(localStorage.getItem('user'));
-    console.log(this.usuario);
   }
 
   ngOnInit() {
@@ -39,6 +38,17 @@ export class UsuarioComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+   }
+
+   guardarDatos(){
+     const formData = new FormData();
+     formData.append('datos', this.usuarioForm.datosContacto);
+     formData.append('_method', 'PUT');
+     this.userService.nuevosDatos(formData, this.usuario.id).subscribe((data: any) => {
+       alert('Modificado');
+     }, (error) => {
+       console.log(error);
+     });
    }
 
    guardarContrasenia(){

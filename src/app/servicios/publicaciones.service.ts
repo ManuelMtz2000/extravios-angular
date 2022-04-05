@@ -23,6 +23,9 @@ export class PublicacionesService {
     return this.httpClient.get(API_ENDPOINT + '/publicaciones/' + id);
   }
 
+  obtenerPublicacionUsuario(id: any){
+    return this.httpClient.get(API_ENDPOINT + '/publicaciones/get/' + id);
+  }
   // reportarPublicacion(id: number){
   // }
 }

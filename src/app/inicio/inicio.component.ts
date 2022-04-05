@@ -23,10 +23,11 @@ export class InicioComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.router.navigate(['tabs/inicio']);
     this.publicacionesService.obtenerPublicaciones().subscribe((data: any) => {
       this.publicacion = data;
       console.log(this.publicacion);
     });
-  }
+   }
 
 }

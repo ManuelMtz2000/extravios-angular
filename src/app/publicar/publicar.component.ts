@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Publicacion } from '../interfaces/Publicacion';
+import { Usuario } from '../interfaces/Usuarios';
 import { PublicacionesService } from '../servicios/publicaciones.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class PublicarComponent implements OnInit {
   tipo = false;
   mostrar = false;
   imagen !: any;
+  usuario !: Usuario;
   publicacion: Publicacion = {
     id: 0,
     tipoPublicacion: '',
@@ -20,8 +22,10 @@ export class PublicarComponent implements OnInit {
     fotoObjeto: '',
     descObjetoC: '',
     descDetallada: '',
+    fotoUsuario: '',
     autorPublicacion: '',
-    lugar: ''
+    lugar: '',
+    statusPublicacion: ''
   };
   constructor(private publicacionesService: PublicacionesService, private router: Router) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
@@ -29,7 +33,9 @@ export class PublicarComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('user'));
+  }
 
   mostrarContacto(event: any){
     console.log(event);
@@ -42,7 +48,9 @@ export class PublicarComponent implements OnInit {
   guardarPublicacion(){
     this.publicacion.tipoPublicacion = this.tipo ? 'Encontrar' : 'Buscar';
     this.publicacion.mostrarContacto = this.mostrar ? 'Si' : 'No';
+    console.log(this.usuario?.id);
     const formData = new FormData();
+    formData.append('id', this.usuario?.id.toString());
     formData.append('tipo_publicacion', this.publicacion.tipoPublicacion);
     formData.append('desc_objetoC', this.publicacion.descObjetoC);
     formData.append('desc_detallada', this.publicacion.descDetallada);

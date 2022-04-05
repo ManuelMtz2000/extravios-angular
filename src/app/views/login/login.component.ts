@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     const formData = new FormData();
+    const currentRoute = 'tabs/inicio';
     formData.append('correo', this.correo);
     formData.append('contrasenia', this.password);
     formData.append('Accept', 'application/json');
@@ -33,7 +34,10 @@ export class LoginComponent implements OnInit {
       this.userService.setToken('user', JSON.stringify(this.sesion.user));
       this.correo = '';
       this.password = '';
-      this.router.navigate(['tabs/inicio']);
+      this.router.navigateByUrl('tabs/inicio', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate([currentRoute]);
+      });
     }, (error) => {
       console.log(error);
     });

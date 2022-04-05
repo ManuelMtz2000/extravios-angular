@@ -6,5 +6,7 @@ export interface Publicacion {
     descObjetoC: string;
     descDetallada: string;
     autorPublicacion: any;
+    fotoUsuario: any;
     lugar: string;
+    statusPublicacion: any;
 }

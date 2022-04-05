@@ -38,7 +38,7 @@
           </ion-button>
         </div>
         <ion-textarea [(ngModel)]="usuarioForm.datosContacto" [ngStyle]="bandera ? {'pointer-events': 'none', 'background-color': '#B1B1B1'} : {'pointer-events': 'all'}" class="text-black bg-gray-200"></ion-textarea>
-        <ion-button color="warning" class="mt-2">Guardar</ion-button>
+        <ion-button (click)="guardarDatos();" color="warning" class="mt-2">Guardar</ion-button>
         <div class="w-full">
           <ion-label class="text-black text-2xl">Cambiar contraseña:</ion-label>
           <ion-input [(ngModel)]="contraOld" class="bg-gray-200 text-black my-2" placeholder="Contraseña anterior" type="password"></ion-input>
