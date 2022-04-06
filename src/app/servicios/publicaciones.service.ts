@@ -26,6 +26,10 @@ export class PublicacionesService {
   obtenerPublicacionUsuario(id: any){
     return this.httpClient.get(API_ENDPOINT + '/publicaciones/get/' + id);
   }
+
+  reportarPublicacion(formData: FormData){
+    return this.httpClient.post(API_ENDPOINT + '/publicaciones/reportar', formData);
+  }
   // reportarPublicacion(id: number){
   // }
 }
