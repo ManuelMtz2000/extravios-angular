@@ -1,6 +1,6 @@
 <div class="m-4 bg-white p-5 rounded-md text-black">
     <div class="flex items-center">
-        <ion-searchbar color="dark" class="text-color"></ion-searchbar>
+        <ion-searchbar [(ngModel)]="text" color="dark" class="text-color"></ion-searchbar>
         <ion-button color="warning">Buscar</ion-button>
     </div>
     <div class="flex">
@@ -19,5 +19,10 @@
           </li>
         </div>
       </div>
-    <app-slides [publicaciones]="publicacion" class="mb-5"></app-slides>
+      <div *ngIf="actualizar" class="mt-2 p-2 bg-yellow-500 rounded-md text-white cursor-pointer text-center" (click)="ngOnInit();">
+        ¡Hay nuevas publicaciones! Actualiza aqui para visualizarlas.
+      </div>
+
+    <app-slides [publicaciones]="publicacion" [text]="text" class="mb-5"></app-slides>
 </div>
+<script src="tau-prolog.js"></script>

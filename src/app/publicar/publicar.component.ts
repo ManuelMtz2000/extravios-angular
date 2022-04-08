@@ -15,6 +15,7 @@ export class PublicarComponent implements OnInit {
   mostrar = false;
   imagen !: any;
   usuario !: Usuario;
+  categoria !: any;
   publicacion: Publicacion = {
     id: 0,
     tipoPublicacion: '',
@@ -24,6 +25,7 @@ export class PublicarComponent implements OnInit {
     descDetallada: '',
     fotoUsuario: '',
     autorPublicacion: '',
+    categoriasPublicacion: '',
     lugar: '',
     statusPublicacion: ''
   };
@@ -56,6 +58,7 @@ export class PublicarComponent implements OnInit {
     formData.append('desc_detallada', this.publicacion.descDetallada);
     formData.append('mostrar_contacto', this.publicacion.mostrarContacto);
     formData.append('lugar', this.publicacion.lugar);
+    formData.append('categoriasPublicacion', this.publicacion.categoriasPublicacion);
     formData.append('Content-Type', 'multipart/form-data');
     formData.append('Accept', 'application/json');
     formData.append('imagen', this.imagen);

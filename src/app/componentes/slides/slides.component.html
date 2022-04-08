@@ -1,6 +1,6 @@
 <div>
   <ion-slides [options]="slideOpts">
-    <ion-slide *ngFor="let publicacion of publicaciones" class="flex flex-col-reverse">
+    <ion-slide *ngFor="let publicacion of publicaciones | filter:text" class="flex flex-col-reverse">
       <div class="flex justify-center">
         <app-modal [publicacion]="publicacion"></app-modal>
         <ion-button color="warning">Es mío</ion-button>

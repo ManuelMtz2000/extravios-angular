@@ -8,5 +8,6 @@ export interface Publicacion {
     autorPublicacion: any;
     fotoUsuario: any;
     lugar: string;
+    categoriasPublicacion: any;
     statusPublicacion: any;
 }

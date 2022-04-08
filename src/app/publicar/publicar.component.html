@@ -35,7 +35,7 @@
     </div>
     <div class="mb-3">
       <ion-label>Categoria del objeto:</ion-label>
-      <ion-select color="light" interface="popover" class="bg-gray-200" okText="Listo" cancelText="Cancelar">
+      <ion-select [(ngModel)]="publicacion.categoriasPublicacion" color="light" interface="popover" class="bg-gray-200" okText="Listo" cancelText="Cancelar">
         <ion-select-option value="1" class="text-black">Electronicos</ion-select-option>
         <ion-select-option value="2" class="text-black">Documentos</ion-select-option>
         <ion-select-option value="3" class="text-black">Otros</ion-select-option>
