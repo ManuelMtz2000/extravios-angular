@@ -41,14 +41,13 @@ export class InicioComponent implements OnInit {
    }
 
    initInterval() {
-    const interval$ = interval(5000);
+    const interval$ = interval(15000);
     interval$.pipe(
       takeUntil(this.subject$)
     ).subscribe(s => {
       this.publicacionesService.obtenerPublicaciones().subscribe((data: any) => {
         this.auxiliar = data;
         if(!(JSON.stringify(this.publicacion) === JSON.stringify(this.auxiliar))){
-          this.publicacion = data;
           this.actualizar = true;
         }
       });

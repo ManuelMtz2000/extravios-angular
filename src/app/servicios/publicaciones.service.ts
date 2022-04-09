@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Publicacion } from '../interfaces/Publicacion';
 
-const API_ENDPOINT = 'http://localhost:8000/api';
+const API_ENDPOINT = 'http://192.168.193.13:8000/api';
 
 @Injectable({
   providedIn: 'root'

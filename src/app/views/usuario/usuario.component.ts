@@ -35,6 +35,7 @@ export class UsuarioComponent implements OnInit {
     this.userService.getUsuario(this.usuario?.id).subscribe((data: any) => {
       this.usuario = data;
       this.usuarioForm.datosContacto = this.usuario.datosContacto;
+      console.log(this.usuario.fotoP);
     }, (error) => {
       console.log(error);
     });
