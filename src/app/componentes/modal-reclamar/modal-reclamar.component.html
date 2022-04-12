@@ -1,0 +1,17 @@
+<ion-button color="warning" (click)="show = true">Es mío
+  <ion-modal [isOpen]="show" class="text-black" breakpoints="[0.1, 0.90, 1]" initialBreakpoint="0.90">
+    <ng-template>
+      <div class="flex flex-col m-5">
+        <h1 class="text-center">Estas por enviar una petición para recuperar tus pertenencias al autor de la publicación.</h1>
+        <div class="mt-4">
+          <ion-label for="mensaje">Mensaje al autor (opcional, recomendamos escribir características especificar del objeto para poder recuperar tus pertenencias): </ion-label>
+          <ion-textarea [(ngModel)]="mensaje" class="bg-gray-200"></ion-textarea>
+          <div class="flex flex-col mt-2">
+            <ion-button color="success" (click)="show = false; reclamar();">Enviar</ion-button>
+            <ion-button color="warning" (click)="show = false;">Cancelar</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-button>

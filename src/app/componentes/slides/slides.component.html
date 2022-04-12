@@ -3,7 +3,7 @@
     <ion-slide *ngFor="let publicacion of publicaciones | filter:text" class="flex flex-col-reverse">
       <div class="flex justify-center">
         <app-modal [publicacion]="publicacion"></app-modal>
-        <ion-button color="warning">Es mío</ion-button>
+        <app-modal-reclamar [publicacion]="publicacion"></app-modal-reclamar>
         <ion-button color="danger" [routerLink]="['reportar/',publicacion.id]">
           <ion-icon icon="warning"></ion-icon>
         </ion-button>

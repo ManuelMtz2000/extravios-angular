@@ -44,8 +44,6 @@ export class ReportesComponent implements OnInit {
       this.show = false;
       alert('Funado el wey');
       this.router.navigate(['tabs/inicio']);
-    }, (error) => {
-      console.log(error);
     });
   }
 

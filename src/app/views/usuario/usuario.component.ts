@@ -36,8 +36,6 @@ export class UsuarioComponent implements OnInit {
       this.usuario = data;
       this.usuarioForm.datosContacto = this.usuario.datosContacto;
       console.log(this.usuario.fotoP);
-    }, (error) => {
-      console.log(error);
     });
    }
 
@@ -47,8 +45,6 @@ export class UsuarioComponent implements OnInit {
      formData.append('_method', 'PUT');
      this.userService.nuevosDatos(formData, this.usuario.id).subscribe((data: any) => {
        alert('Modificado');
-     }, (error) => {
-       console.log(error);
      });
    }
 

@@ -30,6 +30,8 @@ export class PublicacionesService {
   reportarPublicacion(formData: FormData){
     return this.httpClient.post(API_ENDPOINT + '/publicaciones/reportar', formData);
   }
-  // reportarPublicacion(id: number){
-  // }
+
+  reclamarPublicacion(formData: FormData){
+    return this.httpClient.post(API_ENDPOINT + '/publicaciones/reclamar', formData);
+  }
 }

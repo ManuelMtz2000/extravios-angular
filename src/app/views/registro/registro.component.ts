@@ -43,8 +43,6 @@ export class RegistroComponent implements OnInit {
     this.userService.nuevoUsuario(formData).subscribe((data) => {
       alert('Usuario registrado');
       this.router.navigate(['tabs/inicio']);
-    }, (error) => {
-      console.log(error);
     });
   }
 }
