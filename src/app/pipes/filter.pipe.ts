@@ -11,9 +11,7 @@ export class FilterPipe implements PipeTransform {
     }
     const resultPosts = [];
     for(const post of value){
-      if((post.descObjetoC.toLowerCase().indexOf(arg.toLowerCase()) > -1) ||
-      (post.descDetallada.toLowerCase().indexOf(arg.toLowerCase()) > -1) ||
-      (post.lugar.toLowerCase().indexOf(arg.toLowerCase()) > -1)){
+      if((post.categoriasPublicacion.toLowerCase().indexOf(arg.toLowerCase()) > -1)){
          resultPosts.push(post);
       };
     };

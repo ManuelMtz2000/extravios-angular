@@ -43,4 +43,8 @@ export class UsuariosService {
   nuevosDatos(formData: FormData, id: number){
     return this.httpClient.post(API_ENDPOINT + '/users/update/datos/' + id, formData);
   }
+
+  nuevaFoto(formData: FormData, id: number){
+    return this.httpClient.post(API_ENDPOINT + '/users/update/foto/' + id, formData);
+  }
 }

@@ -11,6 +11,7 @@ import { UsuariosService } from 'src/app/servicios/usuarios.service';
 export class LoginComponent implements OnInit {
   ruta = '../../../';
   tipo = false;
+  credenciales = false;
   correo!: string;
   password!: string;
   sesion!: Sesion;
@@ -34,12 +35,13 @@ export class LoginComponent implements OnInit {
       this.userService.setToken('user', JSON.stringify(this.sesion.user));
       this.correo = '';
       this.password = '';
+      this.credenciales = false;
       this.router.navigateByUrl('tabs/inicio', { skipLocationChange: true })
       .then(() => {
         this.router.navigate([currentRoute]);
       });
     }, (error) => {
-      console.log(error);
+      this.credenciales = true;
     });
   }
 

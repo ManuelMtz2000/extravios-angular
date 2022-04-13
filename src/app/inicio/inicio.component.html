@@ -1,22 +1,28 @@
 <div class="m-4 bg-white p-5 rounded-md text-black">
     <div class="flex items-center">
-        <ion-searchbar [(ngModel)]="text" color="dark" class="text-color"></ion-searchbar>
+        <ion-searchbar color="dark" class="text-color"></ion-searchbar>
         <ion-button color="warning">Buscar</ion-button>
     </div>
     <div class="flex">
         <div class="flex mx-2 mt-2 list-none overflow-auto items-center">
-          <li class="flex items-center mx-2 space-x-2">
-            <ion-checkbox color="warning"></ion-checkbox>
-            <span>Documentos</span>
-          </li>
-          <li class="flex items-center mx-2 space-x-2">
-            <ion-checkbox color="warning"></ion-checkbox>
-            <span>Electronicos</span>
-          </li>
-          <li class="flex items-center mx-2 space-x-2">
-            <ion-checkbox color="warning"></ion-checkbox>
-            <span>Otros</span>
-          </li>
+          <ion-radio-group [(ngModel)]="text" class="flex">
+            <li class="flex items-center mx-2 space-x-2">
+              <ion-radio color="warning" [value]="''"></ion-radio>
+              <span>Todas las publicaciones</span>
+            </li>
+            <li class="flex items-center mx-2 space-x-2">
+              <ion-radio color="warning" [value]="'Documentos'"></ion-radio>
+              <span>Documentos</span>
+            </li>
+            <li class="flex items-center mx-2 space-x-2">
+              <ion-radio color="warning" [value]="'Electrónicos'"></ion-radio>
+              <span>Electronicos</span>
+            </li>
+            <li class="flex items-center mx-2 space-x-2">
+              <ion-radio color="warning" [value]="'Otros'"></ion-radio>
+              <span>Otros</span>
+            </li>
+        </ion-radio-group>
         </div>
       </div>
       <div *ngIf="actualizar" class="mt-2 p-2 bg-yellow-500 rounded-md text-white cursor-pointer text-center" (click)="ngOnInit();">

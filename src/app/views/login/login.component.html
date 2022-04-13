@@ -25,6 +25,9 @@
           <ion-input type="password" [(ngModel)]="password" class="bg-gray-200 rounded-md"></ion-input>
         </div>
       </div>
+      <div *ngIf="credenciales" class="bg-red-600 w-full rounded-md p-2 text-white">
+        Error en las credenciales, intente de nuevo.
+      </div>
       <ion-button class="w-full" color="warning" (click)="login();">Entrar</ion-button>
       <div class="mt-2 flex justify-center space-x-1"><p>¿No estás registrado?</p><a routerLink="../registro" class="text-orange-800 font-bold transition hover:underline">Hazlo aquí</a></div>
     </div>

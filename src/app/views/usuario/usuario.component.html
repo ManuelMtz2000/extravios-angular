@@ -23,7 +23,7 @@
         'background-position': 'center'
       }">
           <div *ngIf="botonImagen" class="flex flex-col justify-center items-center">
-            <input required class="opacity-0" type="file">
+            <input (change)="cambiarFoto($event);" class="opacity-0" type="file">
             <ion-icon class="text-2xl mx-2 absolute" icon="camera"></ion-icon>
           </div>
         </div>

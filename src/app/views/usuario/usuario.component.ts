@@ -15,6 +15,7 @@ export class UsuarioComponent implements OnInit {
   contraOld!: string;
   contraNew!: string;
   contraNew2!: string;
+  file !: any;
 
   usuarioForm: Usuario = {
     id: 0,
@@ -37,6 +38,21 @@ export class UsuarioComponent implements OnInit {
       this.usuarioForm.datosContacto = this.usuario.datosContacto;
       console.log(this.usuario.fotoP);
     });
+   }
+
+   cambiarFoto(fileInput: any){
+     this.file = fileInput.target.files[0];
+     const formData = new FormData();
+     formData.append('imagen', this.file);
+     formData.append('_method', 'PUT');
+     formData.append('Content-Type', 'multipart/form-data');
+     this.userService.nuevaFoto(formData, this.usuario.id).subscribe((data: any) => {
+       alert('Foto modificada');
+      console.log(data);
+       this.ngOnInit();
+     }, (error) => {
+       console.log(error);
+     });
    }
 
    guardarDatos(){

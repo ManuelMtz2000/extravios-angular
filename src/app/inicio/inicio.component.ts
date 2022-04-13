@@ -40,6 +40,10 @@ export class InicioComponent implements OnInit {
     this.initInterval();
    }
 
+  checkbox(){
+    console.log(this.text);
+  }
+
    initInterval() {
     const interval$ = interval(15000);
     interval$.pipe(
