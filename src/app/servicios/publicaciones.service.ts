@@ -34,4 +34,8 @@ export class PublicacionesService {
   reclamarPublicacion(formData: FormData){
     return this.httpClient.post(API_ENDPOINT + '/publicaciones/reclamar', formData);
   }
+
+  cerrarPublicacion(formData: FormData, id: any){
+    return this.httpClient.post(API_ENDPOINT + '/publicaciones/cerrar/' + id, formData);
+  }
 }

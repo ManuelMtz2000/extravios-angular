@@ -13,11 +13,24 @@
       <ion-searchbar class="text-black" placeholder="Buscar una publicación"></ion-searchbar>
       <ion-button color="warning" class="mr-2">Buscar</ion-button>
     </div>
+    <h1>Publicaciones realizadas:</h1>
     <app-tarjetas *ngFor="let p of publicaciones"
     [titulo]="p.descObjetoC"
     [detalles]="p.descDetallada"
     [foto]="p.fotoObjeto"
     [status]="p.statusPublicacion"
+    [id]="p.id"
+    [idR]="null"
+    ></app-tarjetas>
+    <br>
+    <br>
+    <h1>Publicaciones reclamadas:</h1>
+    <app-tarjetas *ngFor="let p of publicacionesR"
+    [titulo]="p.descObjetoC"
+    [detalles]="p.descDetallada"
+    [foto]="p.fotoObjeto"
+    [status]="p.statusPublicacion"
+    [idR]="p.idUsuarioR"
     ></app-tarjetas>
   </div>
 </ion-content>

@@ -25,7 +25,9 @@ export class ModalReclamarComponent implements OnInit {
     formData.append('mensaje', this.mensaje);
     formData.append('id', this.usuario?.id.toString());
     this.publicacionesService.reclamarPublicacion(formData).subscribe((data: any) => {
-      alert('Se envió un correo electrónico al autor de la publicación.');
+      alert('El autor de la publicación ha sido notificado. Revisa tu correo electrónico para consultar tu folio y seguir indicaciones.');
+    }, (error) => {
+      alert('Ya haz enviado correo a esta publicación, espera la respuesta.');
     });
   }
 
