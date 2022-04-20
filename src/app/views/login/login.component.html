@@ -17,7 +17,7 @@
         <div class="mb-2">
           <ion-label *ngIf="tipo === false;">Código de estudiante:</ion-label>
           <ion-label *ngIf="tipo">Correo electrónico:</ion-label>
-          <ion-input *ngIf="tipo === false;" type="number" class="bg-gray-200 rounded-md"></ion-input>
+          <ion-input *ngIf="tipo === false;" type="number" [(ngModel)]="codigo" class="bg-gray-200 rounded-md"></ion-input>
           <ion-input *ngIf="tipo" type="text" [(ngModel)]="correo" class="bg-gray-200 rounded-md"></ion-input>
         </div>
         <div class="mb-2">

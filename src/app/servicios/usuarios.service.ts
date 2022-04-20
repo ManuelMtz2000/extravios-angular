@@ -15,6 +15,10 @@ export class UsuariosService {
     return this.httpClient.post(API_ENDPOINT + '/auth/login', formData);
   }
 
+  loginSiiau(formData: FormData){
+    return this.httpClient.post(API_ENDPOINT + '/auth/login/siiau', formData);
+  }
+
   nuevoUsuario(formData: FormData){
     return this.httpClient.post(API_ENDPOINT + '/users', formData);
   }

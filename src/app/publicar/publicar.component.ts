@@ -16,6 +16,12 @@ export class PublicarComponent implements OnInit {
   imagen !: any;
   usuario !: Usuario;
   categoria !: any;
+  e1 = '';
+  e2 = '';
+  e3 = '';
+  e4 = '';
+  e5 = '';
+  etiquetas: string[] = [];
   publicacion: Publicacion = {
     id: 0,
     tipoPublicacion: '',
@@ -48,6 +54,11 @@ export class PublicarComponent implements OnInit {
   }
 
   guardarPublicacion(){
+    if(this.e1.length > 0) { this.etiquetas.push(this.e1.toLocaleLowerCase()); }
+    if(this.e2.length > 0) { this.etiquetas.push(this.e2.toLocaleLowerCase()); }
+    if(this.e3.length > 0) { this.etiquetas.push(this.e3.toLocaleLowerCase()); }
+    if(this.e4.length > 0) { this.etiquetas.push(this.e4.toLocaleLowerCase()); }
+    if(this.e5.length > 0) { this.etiquetas.push(this.e5.toLocaleLowerCase()); }
     this.publicacion.tipoPublicacion = this.tipo ? 'Encontrar' : 'Buscar';
     this.publicacion.mostrarContacto = this.mostrar ? 'Si' : 'No';
     console.log(this.usuario?.id);
@@ -59,11 +70,13 @@ export class PublicarComponent implements OnInit {
     formData.append('mostrar_contacto', this.publicacion.mostrarContacto);
     formData.append('lugar', this.publicacion.lugar);
     formData.append('categoriasPublicacion', this.publicacion.categoriasPublicacion);
+    formData.append('etiquetas', JSON.stringify(this.etiquetas));
     formData.append('Content-Type', 'multipart/form-data');
     formData.append('Accept', 'application/json');
     formData.append('imagen', this.imagen);
     this.publicacionesService.guardarPublicacion(formData).subscribe((data: any) => {
       alert('Guardado');
+      this.ngOnInit();
     }, (error) => {
       console.log(error);
     });
