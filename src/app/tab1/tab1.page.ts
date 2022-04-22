@@ -13,6 +13,11 @@ export class Tab1Page {
     this.usuario = JSON.parse(localStorage.getItem('user'));
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
+    } else {
+      this.usuario = JSON.parse(localStorage.getItem('user'));
+      if(this.usuario.verificado === null){
+        this.router.navigate(['/registro/verificar']);
+      }
     }
   }
 

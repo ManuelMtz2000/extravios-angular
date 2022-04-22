@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <div class="flex items-center">
+      <ion-item color="white" class="text-black hover:bg-gray-200" button [routerLink]="['/tabs/inicio']">
+        <ion-label>
+          <ion-icon icon="arrow-undo-circle-outline" class="text-4xl text-orange-800"></ion-icon>
+        </ion-label>
+      </ion-item>
+      <ion-title class="text-center">Busqueda de publicaciones</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="flex items-center">
+    <ion-searchbar [(ngModel)]="busqueda" color="dark" class="text-color"></ion-searchbar>
+    <ion-button [routerLink]="['/busqueda']" [queryParams]="{id: busqueda}" color="warning">Buscar</ion-button>
+  </div>
+  <div class="m-4 bg-white p-5 rounded-md text-black">
+    <app-simple-card-search
+    *ngFor="let publicacion of publicaciones"
+    [titulo]="publicacion.descObjetoC"
+    [detalles]="publicacion.descDetallada"
+    [foto]="publicacion.fotoObjeto"
+    [publicacion]="publicacion"
+    ></app-simple-card-search>
+    <div *ngIf="bandera">
+      No se encontro un elemento relacionado con la busqueda.
+    </div>
+  </div>
+</ion-content>

@@ -38,6 +38,11 @@ export class PublicarComponent implements OnInit {
   constructor(private publicacionesService: PublicacionesService, private router: Router) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
+    } else {
+      this.usuario = JSON.parse(localStorage.getItem('user'));
+      if(this.usuario.verificado === null){
+        this.router.navigate(['/registro/verificar']);
+      }
     }
   }
 

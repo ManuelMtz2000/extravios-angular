@@ -23,10 +23,16 @@ export class InicioComponent implements OnInit {
   publicacion !: Publicacion[];
   auxiliar !: Publicacion[];
   text = '';
+  busqueda = '';
   usuario !: Usuario;
   constructor(private publicacionesService: PublicacionesService, private router: Router) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
+    } else {
+      this.usuario = JSON.parse(localStorage.getItem('user'));
+      if(this.usuario.verificado === null){
+        this.router.navigate(['/registro/verificar']);
+      }
     }
     this.actualizar = false;
    }
@@ -55,6 +61,17 @@ export class InicioComponent implements OnInit {
           this.actualizar = true;
         }
       });
+    });
+   }
+
+   buscar(){
+    const formData = new FormData();
+    formData.append('id', this.busqueda);
+    formData.append('Accept', 'application/json');
+    this.publicacionesService.buscaPublicacion(formData).subscribe((data: any) => {
+      console.log(data);
+    }, (error) => {
+      console.log(error);
     });
    }
 

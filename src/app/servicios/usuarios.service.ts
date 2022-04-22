@@ -23,6 +23,10 @@ export class UsuariosService {
     return this.httpClient.post(API_ENDPOINT + '/users', formData);
   }
 
+  verificarUsuario(formData: FormData, id: number){
+    return this.httpClient.post(API_ENDPOINT + '/users/verificar/' + id, formData);
+  }
+
   setToken(nombre: string,token: string) {
     localStorage.setItem(nombre, token);
   }
@@ -33,6 +37,10 @@ export class UsuariosService {
 
   deleteToken(){
     localStorage.removeItem('sesion');
+    localStorage.removeItem('user');
+  }
+
+  deleteUserToken(){
     localStorage.removeItem('user');
   }
 

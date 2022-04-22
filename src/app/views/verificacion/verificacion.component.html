@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <div class="flex">
+      <ion-img class="w-20" [src]="ruta + 'assets/logo_transparente.png'"></ion-img>
+      <ion-title class="text-center">Iniciar sesión</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="fondo">
+  <div class="flex justify-center items-center h-full text-black">
+    <div class="w-1/2 p-3 bg-orange-300 rounded-lg border border-orange-300 shadow-lg">
+      <h1 class="text-2xl font-bold">Código de veríficación:</h1>
+      <p>Para acceder a la aplicación, escriba el código de verificación que se ha enviado a su correo electrónico, revise en su bandeja de entrada o spam para consultarlo.</p>
+      <div>
+          <ion-label>Código:</ion-label>
+          <ion-input [(ngModel)]="codigo" class="bg-gray-200 rounded-md"></ion-input>
+      </div>
+      <ion-button class="w-full" color="warning" (click)="verificar();">Validar código</ion-button>
+    </div>
+  </div>
+</ion-content>

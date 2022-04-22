@@ -4,4 +4,5 @@ export interface Usuario {
     correo: string;
     fotoP: string;
     datosContacto: any;
+    verificado: any;
 }

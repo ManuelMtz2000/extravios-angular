@@ -17,6 +17,11 @@ import { PerfilComponent } from './app/perfil/perfil.component';
 import { UsuarioComponent } from './app/views/usuario/usuario.component';
 import { ReportesComponent } from './app/views/reportes/reportes.component';
 import { CookieService } from 'ngx-cookie-service';
+import { BusquedaComponent } from './app/views/busqueda/busqueda.component';
+import { SimpleCardSearchComponent } from './app/componentes/simple-card-search/simple-card-search.component';
+import { ModalSearchDComponent } from './app/componentes/modal-search-d/modal-search-d.component';
+import { ModalSearchRComponent } from './app/componentes/modal-search-r/modal-search-r.component';
+import { VerificacionComponent } from './app/views/verificacion/verificacion.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { CookieService } from 'ngx-cookie-service';
     LoginComponent,
     RegistroComponent,
     UsuarioComponent,
-    ReportesComponent
+    ReportesComponent,
+    BusquedaComponent,
+    SimpleCardSearchComponent,
+    ModalSearchDComponent,
+    ModalSearchRComponent,
+    VerificacionComponent
   ],
   entryComponents: [
   ],

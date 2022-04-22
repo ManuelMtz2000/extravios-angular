@@ -41,10 +41,14 @@ export class LoginComponent implements OnInit {
         this.correo = '';
         this.password = '';
         this.credenciales = false;
-        this.router.navigateByUrl('tabs/inicio', { skipLocationChange: true })
-        .then(() => {
-          this.router.navigate([currentRoute]);
-        });
+        if(this.sesion.user.verificado !== null){
+          this.router.navigateByUrl('tabs/inicio', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate([currentRoute]);
+          });
+        } else {
+          this.router.navigateByUrl('registro/verificar', { skipLocationChange: true });
+        }
       }, (error) => {
         this.credenciales = true;
       });

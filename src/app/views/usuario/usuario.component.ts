@@ -22,12 +22,18 @@ export class UsuarioComponent implements OnInit {
     nombre: '',
     datosContacto: '',
     fotoP: '',
-    correo: ''
+    correo: '',
+    verificado: ''
   };
 
   constructor(private router: Router, private userService: UsuariosService) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
+    } else {
+      this.usuario = JSON.parse(localStorage.getItem('user'));
+      if(this.usuario.verificado === null){
+        this.router.navigate(['/registro/verificar']);
+      }
     }
     this.usuario = JSON.parse(localStorage.getItem('user'));
   }

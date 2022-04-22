@@ -18,6 +18,11 @@ export class ReportesComponent implements OnInit {
   constructor(private router: Router, private publicacionesService: PublicacionesService, private activatedRoute: ActivatedRoute) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
+    } else {
+      this.usuario = JSON.parse(localStorage.getItem('user'));
+      if(this.usuario.verificado === null){
+        this.router.navigate(['/registro/verificar']);
+      }
     }
     this.usuario = JSON.parse(localStorage.getItem('user'));
   }

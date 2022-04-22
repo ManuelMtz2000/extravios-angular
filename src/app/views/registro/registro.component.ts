@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { Router } from '@angular/router';
+import { Sesion } from 'src/app/interfaces/Sesion';
 
 @Component({
   selector: 'app-registro',
@@ -17,6 +18,7 @@ export class RegistroComponent implements OnInit {
   imagen!: any;
   perfil!: any;
   datos!: string;
+  sesion!: Sesion;
   constructor(private userService: UsuariosService, private router: Router) { }
 
   ngOnInit() {}
@@ -40,9 +42,15 @@ export class RegistroComponent implements OnInit {
     formData.append('Accept', 'application/json');
     formData.append('imagen', this.imagen);
     formData.append('perfil', this.perfil);
-    this.userService.nuevoUsuario(formData).subscribe((data) => {
+    this.userService.nuevoUsuario(formData).subscribe((data: any) => {
+        this.sesion = data;
+        this.userService.setToken('sesion', this.sesion.token);
+        this.userService.setToken('user', JSON.stringify(this.sesion.user));
       alert('Usuario registrado');
-      this.router.navigate(['tabs/inicio']);
+      this.router.navigate(['registro/verificar']);
+    }, (error) => {
+      alert('Ocurrio un error al tratar de registrarse, puede deberse a fallas de conexión' +
+      'o un correo ya registrado en la plataforma, vuelva a intentarlo.');
     });
   }
 }

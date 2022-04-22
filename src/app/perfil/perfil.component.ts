@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../interfaces/Usuarios';
 import { UsuariosService } from '../servicios/usuarios.service';
 
 @Component({
@@ -8,10 +9,15 @@ import { UsuariosService } from '../servicios/usuarios.service';
   styleUrls: ['./perfil.component.scss'],
 })
 export class PerfilComponent implements OnInit {
-
+  usuario !: Usuario;
   constructor(private userService: UsuariosService, private router: Router) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
+    } else {
+      this.usuario = JSON.parse(localStorage.getItem('user'));
+      if(this.usuario.verificado === null){
+        this.router.navigate(['/registro/verificar']);
+      }
     }
    }
 

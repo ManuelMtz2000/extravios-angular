@@ -10,6 +10,8 @@ import { RegistroComponent } from './views/registro/registro.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuarioComponent } from './views/usuario/usuario.component';
 import { ReportesComponent } from './views/reportes/reportes.component';
+import { BusquedaComponent } from './views/busqueda/busqueda.component';
+import { VerificacionComponent } from './views/verificacion/verificacion.component';
 
 const routes: Routes = [
   {
@@ -25,8 +27,16 @@ const routes: Routes = [
     component: RegistroComponent
   },
   {
+    path: 'registro/verificar',
+    component: VerificacionComponent
+  },
+  {
     path: 'tabs/inicio/reportar/:id',
     component: ReportesComponent
+  },
+  {
+    path: 'busqueda',
+    component: BusquedaComponent
   },
   {
     path: 'tabs/perfil/usuario',
