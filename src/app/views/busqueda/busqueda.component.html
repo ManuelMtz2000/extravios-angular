@@ -13,7 +13,7 @@
 <ion-content>
   <div class="flex items-center">
     <ion-searchbar [(ngModel)]="busqueda" color="dark" class="text-color"></ion-searchbar>
-    <ion-button [routerLink]="['/busqueda']" [queryParams]="{id: busqueda}" color="warning">Buscar</ion-button>
+    <ion-button [routerLink]="['/busqueda']" [queryParams]="{busqueda: busqueda}" color="warning">Buscar</ion-button>
   </div>
   <div class="m-4 bg-white p-5 rounded-md text-black">
     <app-simple-card-search

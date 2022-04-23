@@ -29,9 +29,9 @@ export class BusquedaComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(queryParams => {
-      this.query = queryParams['id'];
+      this.query = queryParams['busqueda'];
       const formData = new FormData();
-      formData.append('id', this.query);
+      formData.append('busqueda', this.query);
       this.publicacionesService.buscaPublicacion(formData).subscribe((data: any) => {
         this.bandera = false;
         this.publicaciones = data;
