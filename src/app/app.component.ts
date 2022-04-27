@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private router: Router) {
-    if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
-      this.router.navigate(['entrar']);
-    }
+    // if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
+    //   this.router.navigate(['entrar']);
+    // }
   }
 }

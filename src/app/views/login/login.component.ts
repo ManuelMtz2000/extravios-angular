@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
 
   login(){
     const formData = new FormData();
-    const currentRoute = 'tabs/inicio';
     formData.append('contrasenia', this.password);
     formData.append('Accept', 'application/json');
     if(this.tipo){
@@ -42,12 +41,9 @@ export class LoginComponent implements OnInit {
         this.password = '';
         this.credenciales = false;
         if(this.sesion.user.verificado !== null){
-          this.router.navigateByUrl('tabs/inicio', { skipLocationChange: true })
-          .then(() => {
-            this.router.navigate([currentRoute]);
-          });
+            this.router.navigate(['tabs/inicio']);
         } else {
-          this.router.navigateByUrl('registro/verificar', { skipLocationChange: true });
+            this.router.navigate(['/registro/verificar']);
         }
       }, (error) => {
         this.credenciales = true;
@@ -61,22 +57,23 @@ export class LoginComponent implements OnInit {
              } else {
                this.estudiante = JSON.parse(this.xhttp.responseText);
                console.log(this.estudiante);
-               formData.append('contra1', JSON.parse(this.xhttp.responseText)[0].nip);
-               formData.append('contra2', this.password);
                formData.append('codigo', this.codigo);
+               formData.append('Accept', 'application/json');
                this.userService.loginSiiau(formData).subscribe((data: any) => {
-                 this.sesion = {token: data, user: this.estudiante};
-                 this.userService.setToken('sesion', this.sesion.token);
-                this.userService.setToken('user', JSON.stringify(this.sesion.user));
+                this.sesion = {token: data, user: this.estudiante};
                 this.correo = '';
                 this.password = '';
                 this.credenciales = false;
-                this.router.navigateByUrl('tabs/inicio', { skipLocationChange: true })
-                .then(() => {
-                  this.router.navigate([currentRoute]);
-                });
                }, (error) => {
                   this.credenciales = true;
+               });
+               this.userService.verificarSiiau(formData).subscribe((data: any) => {
+                 if(data.msg){
+                  this.userService.setToken('codigo', this.codigo);
+                  this.router.navigate(['siiau']);
+                 } else {
+                   console.log('se encontro');
+                 }
                });
              }
           }

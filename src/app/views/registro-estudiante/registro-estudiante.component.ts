@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { Router } from '@angular/router';
 import { Sesion } from 'src/app/interfaces/Sesion';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.scss'],
+  selector: 'app-registro-estudiante',
+  templateUrl: './registro-estudiante.component.html',
+  styleUrls: ['./registro-estudiante.component.scss'],
 })
-export class RegistroComponent implements OnInit {
+export class RegistroEstudianteComponent implements OnInit {
   nombre!: string;
   apellido1!: string;
   apellido2!: string;
   correo!: string;
-  contrasenia!: string;
-  curp!: string;
-  imagen!: any;
   perfil!: any;
   datos!: string;
   sesion!: Sesion;
@@ -25,10 +22,6 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {}
 
-  getImage(event){
-    this.imagen = event.target.files[0];
-  }
-
   getPerfil(event){
     this.perfil = event.target.files[0];
   }
@@ -37,13 +30,11 @@ export class RegistroComponent implements OnInit {
     const formData = new FormData();
     formData.append('nombre', this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2);
     formData.append('correo', this.correo);
-    formData.append('contrasenia', this.contrasenia);
-    formData.append('curp', this.curp);
     formData.append('datosContacto', this.datos);
     formData.append('Content-Type', 'multipart/form-data');
     formData.append('Accept', 'application/json');
-    formData.append('tipo_usuario_id', '2');
-    formData.append('imagen', this.imagen);
+    formData.append('curp', localStorage.getItem('codigo'));
+    formData.append('tipo_usuario_id', '1');
     formData.append('perfil', this.perfil);
     this.userService.nuevoUsuario(formData).subscribe((data: any) => {
         this.sesion = data;

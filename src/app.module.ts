@@ -22,6 +22,7 @@ import { SimpleCardSearchComponent } from './app/componentes/simple-card-search/
 import { ModalSearchDComponent } from './app/componentes/modal-search-d/modal-search-d.component';
 import { ModalSearchRComponent } from './app/componentes/modal-search-r/modal-search-r.component';
 import { VerificacionComponent } from './app/views/verificacion/verificacion.component';
+import { RegistroEstudianteComponent } from './app/views/registro-estudiante/registro-estudiante.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { VerificacionComponent } from './app/views/verificacion/verificacion.com
     SimpleCardSearchComponent,
     ModalSearchDComponent,
     ModalSearchRComponent,
-    VerificacionComponent
+    VerificacionComponent,
+    RegistroEstudianteComponent
   ],
   entryComponents: [
   ],

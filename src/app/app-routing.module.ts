@@ -12,6 +12,7 @@ import { UsuarioComponent } from './views/usuario/usuario.component';
 import { ReportesComponent } from './views/reportes/reportes.component';
 import { BusquedaComponent } from './views/busqueda/busqueda.component';
 import { VerificacionComponent } from './views/verificacion/verificacion.component';
+import { RegistroEstudianteComponent } from './views/registro-estudiante/registro-estudiante.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'registro/verificar',
     component: VerificacionComponent
+  },
+  {
+    path: 'siiau',
+    component: RegistroEstudianteComponent
   },
   {
     path: 'tabs/inicio/reportar/:id',

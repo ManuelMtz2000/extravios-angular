@@ -10,19 +10,19 @@
     <div class="m-4 bg-white p-5 rounded-md text-black">
       <div class="mb-3">
         <ion-label>Nombres(s)</ion-label>
-        <ion-input [(ngModel)]="nombre" class="bg-gray-200"></ion-input>
+        <ion-input [(ngModel)]="nombre" pattern="^([A-Z]+[a-z]+.)+" class="bg-gray-200"></ion-input>
       </div>
       <div class="mt-4">
         <div class="mb-3">
           <ion-label>Apellidos:</ion-label>
           <div class="flex space-x-2">
-            <ion-input [(ngModel)]="apellido1" class="bg-gray-200"></ion-input>
-            <ion-input [(ngModel)]="apellido2" class="bg-gray-200"></ion-input>
+            <ion-input [(ngModel)]="apellido1" pattern="^([a-zA-Z])+$" class="bg-gray-200"></ion-input>
+            <ion-input [(ngModel)]="apellido2" pattern="^([a-zA-Z])+$" class="bg-gray-200"></ion-input>
           </div>
         </div>
         <div class="mb-3">
           <ion-label>Correo electrónico</ion-label>
-          <ion-input [(ngModel)]="correo" class="bg-gray-200"></ion-input>
+          <ion-input type="email" id="email" [(ngModel)]="correo" class="bg-gray-200"></ion-input>
         </div>
         <div class="mb-3">
           <ion-label>Contraseña:</ion-label>
