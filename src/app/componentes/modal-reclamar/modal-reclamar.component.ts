@@ -13,11 +13,17 @@ export class ModalReclamarComponent implements OnInit {
   show = false;
   mensaje !: string;
   usuario !: Usuario;
-  constructor(private publicacionesService: PublicacionesService) {
-    this.usuario = JSON.parse(localStorage.getItem('user'));
-  }
+  bandera = true;
+  constructor(private publicacionesService: PublicacionesService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('user'));
+    console.log(this.publicacion.autorPublicacion);
+    if(this.usuario?.id === this.publicacion?.idAutor) {
+      this.bandera = false;
+      console.log('xd');
+    }
+  }
 
   reclamar(){
     const formData = new FormData();
@@ -27,6 +33,7 @@ export class ModalReclamarComponent implements OnInit {
     this.publicacionesService.reclamarPublicacion(formData).subscribe((data: any) => {
       alert('El autor de la publicación ha sido notificado. Revisa tu correo electrónico para consultar tu folio y seguir indicaciones.');
     }, (error) => {
+      console.log(error);
       alert('Ya haz enviado correo a esta publicación, espera la respuesta.');
     });
   }

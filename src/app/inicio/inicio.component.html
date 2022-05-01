@@ -1,7 +1,12 @@
 <div class="m-4 bg-white p-5 rounded-md text-black">
-    <div class="flex items-center">
-        <ion-searchbar [(ngModel)]="busqueda" color="dark" class="text-color"></ion-searchbar>
-        <ion-button [routerLink]="['/busqueda']" [queryParams]="{busqueda: busqueda}" color="warning">Buscar</ion-button>
+    <div class="flex flex-col md:flex-row space-x-2 items-center">
+        <div class="flex items-center w-full">
+          <ion-searchbar [(ngModel)]="busqueda" color="dark" class="text-color"></ion-searchbar>
+          <ion-button [routerLink]="['/busqueda']" [queryParams]="{busqueda: busqueda.toLowerCase()}" color="warning">Buscar</ion-button>
+        </div>
+        <br>
+        <ion-label>Busqueda por imagen</ion-label>
+        <input (change)="getImage($event)" type="file">
     </div>
     <div class="flex">
         <div class="flex mx-2 mt-2 list-none overflow-auto items-center">

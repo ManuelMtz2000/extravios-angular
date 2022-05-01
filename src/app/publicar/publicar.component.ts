@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Publicacion } from '../interfaces/Publicacion';
@@ -16,6 +17,8 @@ export class PublicarComponent implements OnInit {
   imagen !: any;
   usuario !: Usuario;
   categoria !: any;
+  codigo = false;
+  codigoTxt = '';
   e1 = '';
   e2 = '';
   e3 = '';
@@ -31,6 +34,7 @@ export class PublicarComponent implements OnInit {
     descDetallada: '',
     fotoUsuario: '',
     autorPublicacion: '',
+    idAutor: '',
     categoriasPublicacion: '',
     lugar: '',
     statusPublicacion: ''
@@ -81,9 +85,14 @@ export class PublicarComponent implements OnInit {
     formData.append('imagen', this.imagen);
     this.publicacionesService.guardarPublicacion(formData).subscribe((data: any) => {
       alert('Guardado');
+      this.router.navigate(['tabs/inicio']);
       this.ngOnInit();
     }, (error) => {
-      console.log(error);
+      if(error instanceof HttpErrorResponse) {
+        if(error.status === 422){
+          alert('Formato de los campos no valido, revise y vuelva intentar.');
+        }
+      }
     });
   }
 

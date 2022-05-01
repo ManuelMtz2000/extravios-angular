@@ -6,6 +6,7 @@ import { Usuario } from '../interfaces/Usuarios';
 import { PublicacionesService } from '../servicios/publicaciones.service';
 import { takeUntil } from 'rxjs/operators';
 import { Auxiliar } from '../interfaces/Auxiliar';
+import { UsuariosService } from '../servicios/usuarios.service';
 
 @Component({
   selector: 'app-inicio',
@@ -25,7 +26,8 @@ export class InicioComponent implements OnInit {
   text = '';
   busqueda = '';
   usuario !: Usuario;
-  constructor(private publicacionesService: PublicacionesService, private router: Router) {
+  imagen !: any;
+  constructor(private publicacionesService: PublicacionesService, private userService: UsuariosService, private router: Router) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
     } else {
@@ -51,7 +53,7 @@ export class InicioComponent implements OnInit {
   }
 
    initInterval() {
-    const interval$ = interval(15000);
+    const interval$ = interval(32000);
     interval$.pipe(
       takeUntil(this.subject$)
     ).subscribe(s => {
@@ -66,10 +68,22 @@ export class InicioComponent implements OnInit {
 
    buscar(){
     const formData = new FormData();
-    formData.append('id', this.busqueda);
+    formData.append('id', this.busqueda.toLowerCase());
     formData.append('Accept', 'application/json');
-    this.publicacionesService.buscaPublicacion(formData).subscribe((data: any) => {
+    this.publicacionesService.buscaPublicacion(formData).subscribe((data: any) => { });
+   }
+
+   getImage(event){
+    this.imagen = event.target.files[0];
+    console.log(this.imagen);
+    const formData = new FormData();
+    formData.append('Content-Type', 'multipart/form-data');
+    formData.append('Accept', 'application/json');
+    formData.append('imagen', this.imagen);
+    this.publicacionesService.busquedaInteligente(formData).subscribe((data: any) => {
       console.log(data);
+      this.userService.setToken('busqueda', JSON.stringify(data.result.tags));
+      this.router.navigate(['busqueda']);
     }, (error) => {
       console.log(error);
     });

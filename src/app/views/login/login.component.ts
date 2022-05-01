@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Sesion } from 'src/app/interfaces/Sesion';
@@ -46,6 +47,12 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/registro/verificar']);
         }
       }, (error) => {
+        if(error instanceof HttpErrorResponse) {
+          if(error.status === 404){
+            alert('Error al iniciar sesión, posiblemente debido a un error de las credenciales o el usuario esta '
+            + 'bloqueado por multiples reportes.');
+          }
+        }
         this.credenciales = true;
       });
     } else {
@@ -55,12 +62,9 @@ export class LoginComponent implements OnInit {
              if(this.xhttp.responseText === '[0]'){
                this.credenciales = true;
              } else {
-               this.estudiante = JSON.parse(this.xhttp.responseText);
-               console.log(this.estudiante);
                formData.append('codigo', this.codigo);
                formData.append('Accept', 'application/json');
                this.userService.loginSiiau(formData).subscribe((data: any) => {
-                this.sesion = {token: data, user: this.estudiante};
                 this.correo = '';
                 this.password = '';
                 this.credenciales = false;
@@ -72,13 +76,18 @@ export class LoginComponent implements OnInit {
                   this.userService.setToken('codigo', this.codigo);
                   this.router.navigate(['siiau']);
                  } else {
-                   console.log('se encontro');
+                   this.userService.loginSiiau(formData).subscribe((data2: any) => {
+                   this.sesion = data2;
+                   this.userService.setToken('sesion', this.sesion.token);
+                   this.userService.setToken('user', JSON.stringify(this.sesion.user));
+                   this.router.navigate(['tabs/inicio']);
+                   }, (error) => {console.log(error);});
                  }
                });
              }
           }
       };
-      this.xhttp.open('GET', 'https://siiauec.000webhostapp.com/VerUsuario.php?codigo=' + this.codigo, true);
+      this.xhttp.open('GET', 'https://siiauec.000webhostapp.com/VerUsuario.php?codigo=' + this.codigo + '&nip='+this.password, true);
       this.xhttp.send();
     }
   }

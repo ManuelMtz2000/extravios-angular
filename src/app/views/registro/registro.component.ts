@@ -17,7 +17,7 @@ export class RegistroComponent implements OnInit {
   curp!: string;
   imagen!: any;
   perfil!: any;
-  datos!: string;
+  datos = '';
   sesion!: Sesion;
   ta!: any;
   letras !: any;
@@ -35,14 +35,19 @@ export class RegistroComponent implements OnInit {
 
   registrarUsuario(){
     const formData = new FormData();
+    console.log(this.datos);
     formData.append('nombre', this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2);
     formData.append('correo', this.correo);
     formData.append('contrasenia', this.contrasenia);
     formData.append('curp', this.curp);
-    formData.append('datosContacto', this.datos);
     formData.append('Content-Type', 'multipart/form-data');
     formData.append('Accept', 'application/json');
     formData.append('tipo_usuario_id', '2');
+    if(this.datos.length > 0) {
+      formData.append('datosContacto', this.datos);
+    } else {
+      formData.append('datosContacto', ' ');
+    }
     formData.append('imagen', this.imagen);
     formData.append('perfil', this.perfil);
     this.userService.nuevoUsuario(formData).subscribe((data: any) => {

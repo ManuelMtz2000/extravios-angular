@@ -16,6 +16,7 @@ export class UsuarioComponent implements OnInit {
   contraNew!: string;
   contraNew2!: string;
   file !: any;
+  datos !: string;
 
   usuarioForm: Usuario = {
     id: 0,

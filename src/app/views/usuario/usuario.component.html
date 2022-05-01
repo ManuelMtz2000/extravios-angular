@@ -37,14 +37,14 @@
             <ion-icon icon="create-outline"></ion-icon>
           </ion-button>
         </div>
-        <ion-textarea [(ngModel)]="usuarioForm.datosContacto" [ngStyle]="bandera ? {'pointer-events': 'none', 'background-color': '#B1B1B1'} : {'pointer-events': 'all'}" class="text-black bg-gray-200"></ion-textarea>
+        <ion-textarea [(ngModel)]="usuario.datosContacto" [ngStyle]="bandera ? {'pointer-events': 'none', 'background-color': '#B1B1B1'} : {'pointer-events': 'all'}" class="text-black bg-gray-200"></ion-textarea>
         <ion-button (click)="guardarDatos();" color="warning" class="mt-2">Guardar</ion-button>
         <div class="w-full">
           <ion-label class="text-black text-2xl">Cambiar contraseña:</ion-label>
           <ion-input [(ngModel)]="contraOld" class="bg-gray-200 text-black my-2" placeholder="Contraseña anterior" type="password"></ion-input>
           <div class="flex space-x-2">
             <ion-input [(ngModel)]="contraNew" class="bg-gray-200 text-black" placeholder="Nueva contraseña" type="password"></ion-input>
-            <ion-input [(ngModel)]="contraNew2" class="bg-gray-200 text-black" placeholder="Confirmar nueva contraseña" type="password"></ion-input>ion-input>
+            <ion-input [(ngModel)]="contraNew2" class="bg-gray-200 text-black" placeholder="Confirmar nueva contraseña" type="password"></ion-input>
           </div>
           <ion-button (click)="guardarContrasenia();" color="warning" class="mt-2">Guardar</ion-button>
         </div>

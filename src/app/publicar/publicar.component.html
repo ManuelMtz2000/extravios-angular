@@ -8,13 +8,13 @@
     <ion-label>¿Conoces el código del estudiante?</ion-label>
     <div>
       <ion-label>No</ion-label>
-      <ion-toggle class="bg-gray-200 mx-2 rounded-xl" color="warning"></ion-toggle>
+      <ion-toggle [(ngModel)]="codigo" class="bg-gray-200 mx-2 rounded-xl" color="warning"></ion-toggle>
       <ion-label>Si</ion-label>
     </div>
   </div>
-  <div class="mb-3">
+  <div *ngIf="codigo" class="mb-3">
     <ion-label>Código del estudiante:</ion-label>
-    <ion-input class="bg-gray-200"></ion-input>
+    <ion-input [(ngModel)]="codigoTxt" class="bg-gray-200"></ion-input>
   </div>
   <div>
     <div class="mb-3">
@@ -48,7 +48,7 @@
     <div class="mb-3 flex flex-col">
       <ion-label>Foto del articulo:</ion-label>
       <div class="flex items-center">
-        <input type="file" (change)="getImage($event)"> 
+        <input accept="image/png,image/jpeg" type="file" (change)="getImage($event)"> 
         <ion-icon class="text-2xl mx-2" icon="camera"></ion-icon>
       </div>
     </div>

@@ -4,7 +4,7 @@
       <div class="flex justify-center">
         <app-modal [publicacion]="publicacion"></app-modal>
         <app-modal-reclamar [publicacion]="publicacion"></app-modal-reclamar>
-        <ion-button color="danger" [routerLink]="['reportar/',publicacion.id]">
+        <ion-button *ngIf="publicacion.idAutor !== this.usuario.id" color="danger" [routerLink]="['reportar/',publicacion.id]">
           <ion-icon icon="warning"></ion-icon>
         </ion-button>
       </div>

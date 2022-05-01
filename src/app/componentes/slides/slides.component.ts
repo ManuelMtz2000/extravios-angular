@@ -14,6 +14,7 @@ export class SlidesComponent implements OnInit {
   @Input() publicaciones: Publicacion[];
   @Input() text: string;
   usuario !: Usuario;
+  bandera = true;
   ruta = '../../..';
   slideOpts = {
     initialSlide: 0,
@@ -24,5 +25,7 @@ export class SlidesComponent implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('user'));
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.usuario.id);
+  }
 }

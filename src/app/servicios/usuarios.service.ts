@@ -31,6 +31,10 @@ export class UsuariosService {
     return this.httpClient.post(API_ENDPOINT + '/users/verificar/' + id, formData);
   }
 
+  verificarStatus(id: number){
+    return this.httpClient.get(API_ENDPOINT + '/users/validate-user/' + id);
+  }
+
   setToken(nombre: string,token: string) {
     localStorage.setItem(nombre, token);
   }
@@ -46,6 +50,10 @@ export class UsuariosService {
 
   deleteUserToken(){
     localStorage.removeItem('user');
+  }
+
+  deleteBusquedaToken(){
+    localStorage.removeItem('busqueda');
   }
 
   getUsuario(id: number) {

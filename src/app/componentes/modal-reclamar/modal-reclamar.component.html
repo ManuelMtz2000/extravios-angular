@@ -1,4 +1,4 @@
-<ion-button color="warning" (click)="show = true">Es mío
+<ion-button *ngIf="bandera" color="warning" (click)="show = true">Es mío
   <ion-modal [isOpen]="show" class="text-black" breakpoints="[0.1, 0.90, 1]" initialBreakpoint="0.90">
     <ng-template>
       <div class="flex flex-col m-5">

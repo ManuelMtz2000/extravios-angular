@@ -47,7 +47,7 @@ export class ReportesComponent implements OnInit {
     formData.append('descripcion', this.descripcion);
     this.publicacionesService.reportarPublicacion(formData).subscribe((data: any) => {
       this.show = false;
-      alert('Funado el wey');
+      alert('Reporte elaborado con correctamente.');
       this.router.navigate(['tabs/inicio']);
     });
   }

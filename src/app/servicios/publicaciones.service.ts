@@ -42,4 +42,8 @@ export class PublicacionesService {
   buscaPublicacion(formData: FormData){
     return this.httpClient.post(API_ENDPOINT + '/publicaciones/busqueda', formData);
   }
+
+  busquedaInteligente(formData: FormData){
+    return this.httpClient.post(API_ENDPOINT + '/publicaciones/busqueda-inteligente', formData);
+  }
 }
