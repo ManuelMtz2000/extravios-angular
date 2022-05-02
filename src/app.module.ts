@@ -13,7 +13,6 @@ import { PublicacionesComponent } from './app/views/publicaciones/publicaciones.
 import { LoginComponent } from './app/views/login/login.component';
 import { RegistroComponent } from './app/views/registro/registro.component';
 import { FormsModule } from '@angular/forms';
-import { PerfilComponent } from './app/perfil/perfil.component';
 import { UsuarioComponent } from './app/views/usuario/usuario.component';
 import { ReportesComponent } from './app/views/reportes/reportes.component';
 import { CookieService } from 'ngx-cookie-service';
@@ -23,7 +22,6 @@ import { ModalSearchDComponent } from './app/componentes/modal-search-d/modal-se
 import { ModalSearchRComponent } from './app/componentes/modal-search-r/modal-search-r.component';
 import { VerificacionComponent } from './app/views/verificacion/verificacion.component';
 import { RegistroEstudianteComponent } from './app/views/registro-estudiante/registro-estudiante.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,11 +39,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ModalSearchDComponent,
     ModalSearchRComponent,
     VerificacionComponent,
-    RegistroEstudianteComponent
+    RegistroEstudianteComponent,
   ],
   entryComponents: [
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, CookieService],
   bootstrap: [AppComponent],
 })

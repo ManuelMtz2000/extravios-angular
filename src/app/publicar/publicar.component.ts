@@ -147,6 +147,16 @@ export class PublicarComponent implements OnInit {
     formData.append('imagen', this.imagen);
     this.publicacionesService.guardarPublicacion(formData).subscribe((data: any) => {
       alert('Guardado');
+      this.codigoTxt = '';
+      this.publicacion.descObjetoC = '';
+      this.publicacion.descDetallada = '';
+      this.publicacion.lugar = '';
+      this.e1 = '';
+      this.e2 = '';
+      this.e3 = '';
+      this.e4 = '';
+      this.e5 = '';
+      this.imagen = '';
       this.router.navigate(['tabs/inicio']);
       this.ngOnInit();
     }, (error) => {

@@ -15,7 +15,7 @@ export class RegistroEstudianteComponent implements OnInit {
   correo = '';
   correo2 = '';
   perfil!: any;
-  datos!: string;
+  datos = '';
   sesion!: Sesion;
   ta!: any;
   letras !: any;
@@ -74,11 +74,11 @@ export class RegistroEstudianteComponent implements OnInit {
       bandera = true;
       this.banderaFormato = true;
     }
-    if(!(this.apellido1.match('^([A-Z][a-z])+$'))){
+    if(!(this.apellido1.match('^([A-Z]+[a-z]+.)+'))){
       bandera = true;
       this.banderaFormato2 = true;
     }
-    if(!(this.apellido2.match('^([A-Z][a-z])+$'))){
+    if(!(this.apellido2.match('^([A-Z]+[a-z]+.)+'))){
       bandera = true;
       this.banderaFormato2 = true;
     }

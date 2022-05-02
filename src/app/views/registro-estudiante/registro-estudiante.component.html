@@ -18,8 +18,8 @@
       <div class="mb-3">
         <ion-label>Apellidos:</ion-label>
         <div class="flex space-x-2">
-          <ion-input [(ngModel)]="apellido1" pattern="^([a-zA-Z])+$" class="bg-gray-200"></ion-input>
-          <ion-input [(ngModel)]="apellido2" pattern="^([a-zA-Z])+$" class="bg-gray-200"></ion-input>
+          <ion-input [(ngModel)]="apellido1" pattern="^([A-Z]+[a-z]+.)+" class="bg-gray-200"></ion-input>
+          <ion-input [(ngModel)]="apellido2" pattern="^([A-Z]+[a-z]+.)+" class="bg-gray-200"></ion-input>
         </div>
         <div *ngIf="banderaAp1 || banderaAp2" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
         <div *ngIf="banderaFormato2" class="bg-red-600 w-full text-center p-2 text-white">*Formato no valido</div>
