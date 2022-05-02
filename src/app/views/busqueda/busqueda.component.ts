@@ -38,7 +38,7 @@ export class BusquedaComponent implements OnInit {
         this.arreglo = JSON.parse(localStorage.getItem('busqueda'));
         this.arreglo.forEach((arreglo) => {formData.append('busquedaArray[]', arreglo.tag.es);});
       } else {
-        formData.append('busqueda', this.query);
+        formData.append('busqueda', this.query.toLowerCase());
       }
       this.publicacionesService.buscaPublicacion(formData).subscribe((data: any) => {
         this.bandera = false;

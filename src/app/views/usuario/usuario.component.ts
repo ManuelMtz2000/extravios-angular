@@ -16,7 +16,7 @@ export class UsuarioComponent implements OnInit {
   contraNew!: string;
   contraNew2!: string;
   file !: any;
-  datos !: string;
+  datos = '';
 
   usuarioForm: Usuario = {
     id: 0,
@@ -43,7 +43,7 @@ export class UsuarioComponent implements OnInit {
     this.userService.getUsuario(this.usuario?.id).subscribe((data: any) => {
       this.usuario = data;
       this.usuarioForm.datosContacto = this.usuario.datosContacto;
-      console.log(this.usuario.fotoP);
+      this.datos = this.usuarioForm.datosContacto;
     });
    }
 
@@ -64,7 +64,11 @@ export class UsuarioComponent implements OnInit {
 
    guardarDatos(){
      const formData = new FormData();
-     formData.append('datos', this.usuarioForm.datosContacto);
+     if(this.usuarioForm.datosContacto.length > 0) {
+      formData.append('datos', this.datos);
+    } else {
+      formData.append('datos', ' ');
+    }
      formData.append('_method', 'PUT');
      this.userService.nuevosDatos(formData, this.usuario.id).subscribe((data: any) => {
        alert('Modificado');
