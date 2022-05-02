@@ -9,15 +9,25 @@ import { UsuariosService } from 'src/app/servicios/usuarios.service';
   styleUrls: ['./registro-estudiante.component.scss'],
 })
 export class RegistroEstudianteComponent implements OnInit {
-  nombre!: string;
-  apellido1!: string;
-  apellido2!: string;
-  correo!: string;
+  nombre = '';
+  apellido1 = '';
+  apellido2 = '';
+  correo = '';
+  correo2 = '';
   perfil!: any;
   datos!: string;
   sesion!: Sesion;
   ta!: any;
   letras !: any;
+  banderaNombre = false;
+  banderaAp1 = false;
+  banderaAp2 = false;
+  banderaCorreo = false;
+  banderaCorreo2 = false;
+  banderaConfirmar = false;
+  banderaFormato = false;
+  banderaFormato2 = false;
+  banderaFormato3 = false;
   constructor(private userService: UsuariosService, private router: Router) { }
 
   ngOnInit() {}
@@ -26,11 +36,67 @@ export class RegistroEstudianteComponent implements OnInit {
     this.perfil = event.target.files[0];
   }
 
+  validar(){
+    let bandera = false;
+    this.banderaNombre = false;
+    this.banderaAp1 = false;
+    this.banderaAp2 = false;
+    this.banderaCorreo = false;
+    this.banderaCorreo2 = false;
+    this.banderaConfirmar = false;
+    this.banderaFormato = false;
+    this.banderaFormato2 = false;
+    if(!(this.nombre.length > 0)) {
+      bandera = true;
+      this.banderaNombre = true;
+    }
+    if(!(this.apellido1.length > 0)) {
+      bandera = true;
+      this.banderaAp1 = true;
+    }
+    if(!(this.apellido2.length > 0)) {
+      bandera = true;
+      this.banderaAp2 = true;
+    }
+    if(!(this.correo.length > 0)) {
+      bandera = true;
+      this.banderaCorreo = true;
+    }
+    if(!(this.correo2.length > 0)) {
+      bandera = true;
+      this.banderaCorreo2 = true;
+    }
+    if(!(this.correo === this.correo2)) {
+      bandera = true;
+      this.banderaConfirmar = true;
+    }
+    if(!(this.nombre.match('^([A-Z]+[a-z]+.)+'))){
+      bandera = true;
+      this.banderaFormato = true;
+    }
+    if(!(this.apellido1.match('^([A-Z][a-z])+$'))){
+      bandera = true;
+      this.banderaFormato2 = true;
+    }
+    if(!(this.apellido2.match('^([A-Z][a-z])+$'))){
+      bandera = true;
+      this.banderaFormato2 = true;
+    }
+    return bandera;
+  }
+
   registrarUsuario(){
+    if(this.validar()) {
+      return null;
+    }
     const formData = new FormData();
     formData.append('nombre', this.nombre + ' ' + this.apellido1 + ' ' + this.apellido2);
     formData.append('correo', this.correo);
-    formData.append('datosContacto', this.datos);
+    if(this.datos.length > 0) {
+      formData.append('datosContacto', this.datos);
+    } else {
+      formData.append('datosContacto', ' ');
+    }
     formData.append('Content-Type', 'multipart/form-data');
     formData.append('Accept', 'application/json');
     formData.append('curp', localStorage.getItem('codigo'));

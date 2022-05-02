@@ -19,6 +19,13 @@ export class PublicarComponent implements OnInit {
   categoria !: any;
   codigo = false;
   codigoTxt = '';
+  banderaCodigo = false;
+  banderaDescC = false;
+  banderaDescD = false;
+  banderaEtiqueta = false;
+  banderaCategoria = false;
+  banderaLugar = false;
+  banderaImagen = false;
   e1 = '';
   e2 = '';
   e3 = '';
@@ -62,7 +69,62 @@ export class PublicarComponent implements OnInit {
     this.imagen = event.target.files[0];
   }
 
+  required(cadena: string){
+    if(cadena.length > 0){
+      return true;
+    }
+    return false;
+  }
+
   guardarPublicacion(){
+    let bandera = true;
+    this.banderaCodigo = false;
+    this.banderaDescC = false;
+    this.banderaDescD = false;
+    this.banderaEtiqueta = false;
+    this.banderaCategoria = false;
+    this.banderaImagen = false;
+    this.banderaLugar = false;
+    if(this.codigo){
+      if(this.codigoTxt.toString().length < 9 || this.codigoTxt.toString().length > 9) {
+        this.banderaCodigo = true;
+        bandera = false;
+      }
+    }
+    if(!this.required(this.publicacion.descObjetoC)){
+      this.banderaDescC = true;
+      bandera = false;
+    }
+    if(!this.required(this.publicacion.descDetallada)){
+      this.banderaDescD = true;
+      bandera = false;
+    }
+    if(!this.required(this.e1) && !this.required(this.e2)
+    && !this.required(this.e3) && !this.required(this.e4) && !this.required(this.e5))
+    {
+      this.banderaEtiqueta = true;
+      bandera = false;
+    }
+    if(!this.e1.match('^([a-zA-Z])*$') || !this.e2.match('^([a-zA-Z])*$')
+    || !this.e3.match('^([a-zA-Z])*$') || !this.e4.match('^([a-zA-Z])*$') || !this.e5.match('^([a-zA-Z])*$')) {
+      this.banderaEtiqueta = true;
+      bandera = false;
+    }
+    if(!this.required(this.publicacion.lugar)) {
+      this.banderaLugar = true;
+      bandera = false;
+    }
+    if(!this.required(this.publicacion.categoriasPublicacion)){
+      this.banderaCategoria = true;
+      bandera = false;
+    }
+    if(!this.imagen) {
+      this.banderaImagen = true;
+      bandera = false;
+    }
+    if(bandera === false) {
+      return null;
+    }
     if(this.e1.length > 0) { this.etiquetas.push(this.e1.toLocaleLowerCase()); }
     if(this.e2.length > 0) { this.etiquetas.push(this.e2.toLocaleLowerCase()); }
     if(this.e3.length > 0) { this.etiquetas.push(this.e3.toLocaleLowerCase()); }

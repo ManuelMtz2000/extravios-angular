@@ -11,6 +11,8 @@
     <div class="mb-3">
       <ion-label>Nombres(s)</ion-label>
       <ion-input [(ngModel)]="nombre" pattern="^([A-Z]+[a-z]+.)+" class="bg-gray-200"></ion-input>
+      <div *ngIf="banderaNombre" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
+      <div *ngIf="banderaFormato" class="bg-red-600 w-full text-center p-2 text-white">*Formato no valido</div>
     </div>
     <div class="mt-4">
       <div class="mb-3">
@@ -19,10 +21,17 @@
           <ion-input [(ngModel)]="apellido1" pattern="^([a-zA-Z])+$" class="bg-gray-200"></ion-input>
           <ion-input [(ngModel)]="apellido2" pattern="^([a-zA-Z])+$" class="bg-gray-200"></ion-input>
         </div>
+        <div *ngIf="banderaAp1 || banderaAp2" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
+        <div *ngIf="banderaFormato2" class="bg-red-600 w-full text-center p-2 text-white">*Formato no valido</div>
       </div>
       <div class="mb-3">
         <ion-label>Correo electrónico</ion-label>
-        <ion-input type="email" id="email" [(ngModel)]="correo" class="bg-gray-200"></ion-input>
+        <div class="flex space-x-2">
+          <ion-input type="email" id="email" [(ngModel)]="correo" class="bg-gray-200"></ion-input>
+          <ion-input type="email" id="email" [(ngModel)]="correo2" placeholder="Confirmar correo" class="bg-gray-200"></ion-input>
+        </div>
+        <div *ngIf="banderaCorreo || banderaCorreo2" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
+        <div *ngIf="banderaConfirmar" class="bg-red-600 w-full text-center p-2 text-white">*Los correos ingresados no coinciden</div>
       </div>
       <div class="mb-2">
         <ion-label>Datos de contacto (opcional):</ion-label>

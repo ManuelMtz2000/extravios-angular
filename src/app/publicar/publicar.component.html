@@ -14,24 +14,28 @@
   </div>
   <div *ngIf="codigo" class="mb-3">
     <ion-label>Código del estudiante:</ion-label>
-    <ion-input [(ngModel)]="codigoTxt" class="bg-gray-200"></ion-input>
+    <ion-input [(ngModel)]="codigoTxt" type="number" maxlength="9" minlenght="9" class="bg-gray-200"></ion-input>
+    <div class="bg-red-600 w-full text-center p-2 text-white" *ngIf="banderaCodigo">*El código debe ser de 9 digitos</div>
   </div>
   <div>
     <div class="mb-3">
       <ion-label>Descripcion corta:</ion-label>
-      <ion-input [(ngModel)]="publicacion.descObjetoC" class="bg-gray-200"></ion-input>
+      <ion-input [(ngModel)]="publicacion.descObjetoC" class="bg-gray-200" required></ion-input>
+      <div *ngIf="banderaDescC" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
     </div>
     <div class="mb-3">
       <ion-label>Descripción larga:</ion-label>
-      <ion-input [(ngModel)]="publicacion.descDetallada" class="bg-gray-200"></ion-input>
+      <ion-input [(ngModel)]="publicacion.descDetallada" class="bg-gray-200" requerid></ion-input>
+      <div *ngIf="banderaDescD" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
     </div>
     <div class="mb-3">
-      <ion-label>Etiquetas para busqueda (por lo menos, agregar una):</ion-label>
-      <ion-input [(ngModel)]="e1" required class="bg-gray-200 mb-1" placeholder="Etiqueta #1"></ion-input>
-      <ion-input [(ngModel)]="e2" class="bg-gray-200 mb-1" placeholder="Etiqueta #2"></ion-input>
-      <ion-input [(ngModel)]="e3" class="bg-gray-200 mb-1" placeholder="Etiqueta #3"></ion-input>
-      <ion-input [(ngModel)]="e4" class="bg-gray-200 mb-1" placeholder="Etiqueta #4"></ion-input>
-      <ion-input [(ngModel)]="e5" class="bg-gray-200 mb-1" placeholder="Etiqueta #5"></ion-input>
+      <ion-label>Etiquetas para busqueda (por lo menos, agregar una y solo en una palabra):</ion-label>
+      <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e1" required class="bg-gray-200 mb-1" placeholder="Etiqueta #1"></ion-input>
+      <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e2" class="bg-gray-200 mb-1" placeholder="Etiqueta #2"></ion-input>
+      <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e3" class="bg-gray-200 mb-1" placeholder="Etiqueta #3"></ion-input>
+      <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e4" class="bg-gray-200 mb-1" placeholder="Etiqueta #4"></ion-input>
+      <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e5" class="bg-gray-200 mb-1" placeholder="Etiqueta #5"></ion-input>
+      <div *ngIf="banderaEtiqueta" class="bg-red-600 w-full text-center p-2 text-white">*Debes incluir al menos una etiqueta de una sola palabra</div>
     </div>
     <div class="mb-3">
       <ion-label>Categoria del objeto:</ion-label>
@@ -40,10 +44,12 @@
         <ion-select-option value="2" class="text-black">Documentos</ion-select-option>
         <ion-select-option value="3" class="text-black">Otros</ion-select-option>
       </ion-select>
+      <div *ngIf="banderaCategoria" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
     </div>
     <div class="mb-3">
       <ion-label>Lugar encontrado / extraviado:</ion-label>
       <ion-input [(ngModel)]="publicacion.lugar" class="bg-gray-200"></ion-input>
+      <div *ngIf="banderaLugar" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
     </div>
     <div class="mb-3 flex flex-col">
       <ion-label>Foto del articulo:</ion-label>
@@ -51,6 +57,7 @@
         <input accept="image/png,image/jpeg" type="file" (change)="getImage($event)"> 
         <ion-icon class="text-2xl mx-2" icon="camera"></ion-icon>
       </div>
+      <div *ngIf="banderaImagen" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
     </div>
     <div class="mb-3 flex items-center">
       <ion-label>Mostrar datos de contacto en publicación:</ion-label>

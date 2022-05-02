@@ -23,6 +23,7 @@ import { ModalSearchDComponent } from './app/componentes/modal-search-d/modal-se
 import { ModalSearchRComponent } from './app/componentes/modal-search-r/modal-search-r.component';
 import { VerificacionComponent } from './app/views/verificacion/verificacion.component';
 import { RegistroEstudianteComponent } from './app/views/registro-estudiante/registro-estudiante.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { RegistroEstudianteComponent } from './app/views/registro-estudiante/reg
   ],
   entryComponents: [
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, CookieService],
   bootstrap: [AppComponent],
 })
