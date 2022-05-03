@@ -23,6 +23,7 @@ export class PublicarComponent implements OnInit {
   banderaDescC = false;
   banderaDescD = false;
   banderaEtiqueta = false;
+  banderaEtiqueta2 = false;
   banderaCategoria = false;
   banderaLugar = false;
   banderaImagen = false;
@@ -78,6 +79,7 @@ export class PublicarComponent implements OnInit {
     this.banderaDescC = false;
     this.banderaDescD = false;
     this.banderaEtiqueta = false;
+    this.banderaEtiqueta2 = false;
     this.banderaCategoria = false;
     this.banderaImagen = false;
     this.banderaLugar = false;
@@ -103,7 +105,7 @@ export class PublicarComponent implements OnInit {
     }
     if(!this.e1.match('^([a-zA-Z])*$') || !this.e2.match('^([a-zA-Z])*$')
     || !this.e3.match('^([a-zA-Z])*$') || !this.e4.match('^([a-zA-Z])*$') || !this.e5.match('^([a-zA-Z])*$')) {
-      this.banderaEtiqueta = true;
+      this.banderaEtiqueta2 = true;
       bandera = false;
     }
     if(!this.required(this.publicacion.lugar)) {

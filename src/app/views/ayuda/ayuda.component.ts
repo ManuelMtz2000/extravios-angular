@@ -11,8 +11,7 @@ import { AyudaService } from 'src/app/servicios/ayuda.service';
 })
 export class AyudaComponent implements OnInit {
   usuario !: Usuario;
-  ayuda: Ayuda[] = [];
-  constructor(private router: Router, private ayudaService: AyudaService) {
+  constructor(private router: Router) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
     } else {
@@ -23,11 +22,6 @@ export class AyudaComponent implements OnInit {
     }
    }
 
-  ngOnInit() {
-    this.ayudaService.getAyuda().subscribe((data: any) => {
-      this.ayuda = data;
-      console.log(this.ayuda);
-    });
-  }
+  ngOnInit() { }
 
 }

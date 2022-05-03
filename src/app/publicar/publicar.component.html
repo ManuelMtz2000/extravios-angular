@@ -29,13 +29,14 @@
       <div *ngIf="banderaDescD" class="bg-red-600 w-full text-center p-2 text-white">*Campo requerido</div>
     </div>
     <div class="mb-3">
-      <ion-label>Etiquetas para busqueda (por lo menos, agregar una y solo en una palabra):</ion-label>
+      <ion-label>Etiquetas para busqueda (por lo menos, agregar una y solo en una palabra, no incluir espacios):</ion-label>
       <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e1" required class="bg-gray-200 mb-1" placeholder="Etiqueta #1"></ion-input>
       <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e2" class="bg-gray-200 mb-1" placeholder="Etiqueta #2"></ion-input>
       <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e3" class="bg-gray-200 mb-1" placeholder="Etiqueta #3"></ion-input>
       <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e4" class="bg-gray-200 mb-1" placeholder="Etiqueta #4"></ion-input>
       <ion-input pattern="^([a-zA-Z])+$" [(ngModel)]="e5" class="bg-gray-200 mb-1" placeholder="Etiqueta #5"></ion-input>
       <div *ngIf="banderaEtiqueta" class="bg-red-600 w-full text-center p-2 text-white">*Debes incluir al menos una etiqueta de una sola palabra</div>
+      <div *ngIf="banderaEtiqueta2" class="bg-red-600 w-full text-center p-2 text-white">*Uno o varios campos no cumplen con el formato solicitado (solo letras, sin espacios)</div>
     </div>
     <div class="mb-3">
       <ion-label>Categoria del objeto:</ion-label>

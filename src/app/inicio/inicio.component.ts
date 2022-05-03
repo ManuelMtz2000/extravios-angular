@@ -75,9 +75,10 @@ export class InicioComponent implements OnInit {
     formData.append('Accept', 'application/json');
     formData.append('imagen', this.imagen);
     this.publicacionesService.busquedaInteligente(formData).subscribe((data: any) => {
+      console.log(data);
       this.userService.setToken('busqueda', JSON.stringify(data.result.tags));
       this.router.navigate(['busqueda']);
-    }, (error) => { });
+    }, (error) => { console.log(error); });
    }
 
 }
