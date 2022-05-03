@@ -18,10 +18,8 @@ export class ModalReclamarComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem('user'));
-    console.log(this.publicacion.autorPublicacion);
     if(this.usuario?.id === this.publicacion?.idAutor) {
       this.bandera = false;
-      console.log('xd');
     }
   }
 
@@ -33,7 +31,6 @@ export class ModalReclamarComponent implements OnInit {
     this.publicacionesService.reclamarPublicacion(formData).subscribe((data: any) => {
       alert('El autor de la publicación ha sido notificado. Revisa tu correo electrónico para consultar tu folio y seguir indicaciones.');
     }, (error) => {
-      console.log(error);
       alert('Ya haz enviado correo a esta publicación, espera la respuesta.');
     });
   }

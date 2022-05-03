@@ -1,5 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/Usuarios';
 import { UsuariosService } from '../../servicios/usuarios.service';
 
@@ -13,11 +14,12 @@ export class UsuarioComponent implements OnInit {
   botonImagen = false;
   usuario !: Usuario;
   contraOld!: string;
-  contraNew!: string;
-  contraNew2!: string;
+  contraNew = '';
+  contraNew2 = '';
   file !: any;
+  banderaContra = false;
   datos = '';
-
+  id !: any;
   usuarioForm: Usuario = {
     id: 0,
     nombre: '',
@@ -27,7 +29,7 @@ export class UsuarioComponent implements OnInit {
     verificado: ''
   };
 
-  constructor(private router: Router, private userService: UsuariosService) {
+  constructor(private router: Router, private userService: UsuariosService, private activatedRoute: ActivatedRoute) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
     } else {
@@ -40,10 +42,19 @@ export class UsuarioComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsuario(this.usuario?.id).subscribe((data: any) => {
-      this.usuario = data;
-      this.usuarioForm.datosContacto = this.usuario.datosContacto;
-      this.datos = this.usuarioForm.datosContacto;
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+      this.id = params.get('id');
+      if(this.id){
+        if(this.id !== this.usuario.id.toString()){
+          this.router.navigate(['tabs/inicio']);
+        } else {
+            this.userService.getUsuario(this.id).subscribe((data: any) => {
+            this.usuario = data;
+            this.usuarioForm.datosContacto = this.usuario.datosContacto;
+            this.datos = this.usuarioForm.datosContacto;
+          });
+        }
+      }
     });
    }
 
@@ -75,8 +86,25 @@ export class UsuarioComponent implements OnInit {
      });
    }
 
+   validar(){
+     let bandera = false;
+     if(this.contraNew.length > 8 && this.contraNew.length <= 16){
+        bandera = true;
+        this.banderaContra = true;
+     }
+     if(this.contraNew2.length > 8 && this.contraNew2.length <= 16){
+       bandera = true;
+       this.banderaContra = true;
+     }
+     return bandera;
+   }
+
    guardarContrasenia(){
      if(this.contraNew === this.contraNew2){
+       this.banderaContra = false;
+       if(this.validar()){
+         return null;
+       }
        const formData = new FormData();
        formData.append('contraOld', this.contraOld);
        formData.append('contraNew', this.contraNew);
@@ -85,10 +113,16 @@ export class UsuarioComponent implements OnInit {
        this.userService.nuevaContra(formData, this.usuario.id).subscribe((data: any) => {
          alert('Modificado');
        }, (error) => {
-         alert('La contraseña original no coincide.');
+         if(error instanceof HttpErrorResponse){
+           if(error.status === 402){
+             alert('No tiene permitido cambiar la contraseña.');
+           } else {
+             alert('Error en la operación, puede deberse a que la contraseña original no coincide o un error en su conexión a Internet.');
+           }
+          }
        });
      } else {
-       alert('La contraseña no coincide.');
+       alert('Las contraseñas ingresadas no coinciden.');
      }
    }
 

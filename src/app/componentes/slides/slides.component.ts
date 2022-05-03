@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Auxiliar } from 'src/app/interfaces/Auxiliar';
 import { Publicacion } from 'src/app/interfaces/Publicacion';
 import { Usuario } from 'src/app/interfaces/Usuarios';
 import { PublicacionesService } from 'src/app/servicios/publicaciones.service';
@@ -25,7 +24,5 @@ export class SlidesComponent implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('user'));
   }
 
-  ngOnInit() {
-    console.log(this.usuario.id);
-  }
+  ngOnInit() { }
 }

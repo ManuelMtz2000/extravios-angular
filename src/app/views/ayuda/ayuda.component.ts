@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Ayuda } from 'src/app/interfaces/Ayuda';
 import { Usuario } from 'src/app/interfaces/Usuarios';
+import { AyudaService } from 'src/app/servicios/ayuda.service';
 
 @Component({
   selector: 'app-ayuda',
@@ -9,7 +11,8 @@ import { Usuario } from 'src/app/interfaces/Usuarios';
 })
 export class AyudaComponent implements OnInit {
   usuario !: Usuario;
-  constructor(private router: Router) {
+  ayuda: Ayuda[] = [];
+  constructor(private router: Router, private ayudaService: AyudaService) {
     if(!(localStorage.getItem('sesion') && localStorage.getItem('user'))){
       this.router.navigate(['entrar']);
     } else {
@@ -20,6 +23,11 @@ export class AyudaComponent implements OnInit {
     }
    }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ayudaService.getAyuda().subscribe((data: any) => {
+      this.ayuda = data;
+      console.log(this.ayuda);
+    });
+  }
 
 }

@@ -21,7 +21,7 @@ export class PerfilComponent implements OnInit {
     }
    }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   logout(){
     this.userService.deleteToken();

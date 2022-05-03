@@ -46,6 +46,7 @@
             <ion-input [(ngModel)]="contraNew" class="bg-gray-200 text-black" placeholder="Nueva contraseña" type="password"></ion-input>
             <ion-input [(ngModel)]="contraNew2" class="bg-gray-200 text-black" placeholder="Confirmar nueva contraseña" type="password"></ion-input>
           </div>
+          <div *ngIf="banderaContra" class="bg-red-600 w-full text-center p-2 text-white">*Formato de contraseña no valido, debe tener una longitud entre 8 y 16 caracteres.</div>
           <ion-button (click)="guardarContrasenia();" color="warning" class="mt-2">Guardar</ion-button>
         </div>
       </div>

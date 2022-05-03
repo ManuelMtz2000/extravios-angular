@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UsuariosService, private router: Router) {
     if(this.userService.getToken('sesion') && this.userService.getToken('user')){
       this.router.navigate(['tabs/inicio']);
-    } else {
-      console.log('Nel');
     }
    }
 
@@ -58,7 +56,6 @@ export class LoginComponent implements OnInit {
     } else {
       this.xhttp.onreadystatechange = () => {
           if (this.xhttp.readyState === 4 && this.xhttp.status === 200) {
-             // Typical action to be performed when the document is ready:
              if(this.xhttp.responseText === '[0]'){
                this.credenciales = true;
              } else {
@@ -81,7 +78,7 @@ export class LoginComponent implements OnInit {
                    this.userService.setToken('sesion', this.sesion.token);
                    this.userService.setToken('user', JSON.stringify(this.sesion.user));
                    this.router.navigate(['tabs/inicio']);
-                   }, (error) => {console.log(error);});
+                   });
                  }
                });
              }

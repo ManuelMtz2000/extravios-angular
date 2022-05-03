@@ -25,8 +25,6 @@ export class TarjetasComponent implements OnInit {
     formData.append('_method', 'PUT');
     this.publicacionesService.cerrarPublicacion(formData, this.id).subscribe((data: any) => {
       alert('Publicación cerrada con éxito.');
-    }, (error) => {
-      console.log(error);
-    });
+    }, (error) => { });
   }
 }

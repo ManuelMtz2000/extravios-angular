@@ -44,7 +44,7 @@ const routes: Routes = [
     component: BusquedaComponent
   },
   {
-    path: 'tabs/perfil/usuario',
+    path: 'tabs/perfil/usuario/:id',
     component: UsuarioComponent
   },
   {

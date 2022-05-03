@@ -43,14 +43,9 @@ export class InicioComponent implements OnInit {
     this.actualizar = false;
     this.publicacionesService.obtenerPublicaciones().subscribe((data: any) => {
       this.publicacion = data;
-      console.log(this.publicacion);
     });
     this.initInterval();
    }
-
-  checkbox(){
-    console.log(this.text);
-  }
 
    initInterval() {
     const interval$ = interval(32000);
@@ -75,18 +70,14 @@ export class InicioComponent implements OnInit {
 
    getImage(event){
     this.imagen = event.target.files[0];
-    console.log(this.imagen);
     const formData = new FormData();
     formData.append('Content-Type', 'multipart/form-data');
     formData.append('Accept', 'application/json');
     formData.append('imagen', this.imagen);
     this.publicacionesService.busquedaInteligente(formData).subscribe((data: any) => {
-      console.log(data);
       this.userService.setToken('busqueda', JSON.stringify(data.result.tags));
       this.router.navigate(['busqueda']);
-    }, (error) => {
-      console.log(error);
-    });
+    }, (error) => { });
    }
 
 }

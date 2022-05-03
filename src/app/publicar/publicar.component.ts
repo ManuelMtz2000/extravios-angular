@@ -61,10 +61,6 @@ export class PublicarComponent implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('user'));
   }
 
-  mostrarContacto(event: any){
-    console.log(event);
-  }
-
   getImage(event){
     this.imagen = event.target.files[0];
   }
@@ -132,7 +128,6 @@ export class PublicarComponent implements OnInit {
     if(this.e5.length > 0) { this.etiquetas.push(this.e5.toLocaleLowerCase()); }
     this.publicacion.tipoPublicacion = this.tipo ? 'Encontrar' : 'Buscar';
     this.publicacion.mostrarContacto = this.mostrar ? 'Si' : 'No';
-    console.log(this.usuario?.id);
     const formData = new FormData();
     formData.append('id', this.usuario?.id.toString());
     formData.append('tipo_publicacion', this.publicacion.tipoPublicacion);

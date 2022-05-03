@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 const API_ENDPOINT = 'http://192.168.193.13:8000/api';
 
@@ -8,6 +9,8 @@ const API_ENDPOINT = 'http://192.168.193.13:8000/api';
   providedIn: 'root'
 })
 export class UsuariosService {
+
+  private storageItem = new Subject<any>();
 
   constructor(private httpClient: HttpClient, private cookies: CookieService) { }
 
@@ -37,6 +40,7 @@ export class UsuariosService {
 
   setToken(nombre: string,token: string) {
     localStorage.setItem(nombre, token);
+    this.storageItem.next('changed');
   }
 
   getToken(token: string) {
@@ -46,6 +50,7 @@ export class UsuariosService {
   deleteToken(){
     localStorage.removeItem('sesion');
     localStorage.removeItem('user');
+    this.storageItem.next('changed');
   }
 
   deleteUserToken(){
@@ -54,6 +59,10 @@ export class UsuariosService {
 
   deleteBusquedaToken(){
     localStorage.removeItem('busqueda');
+  }
+
+  watchStorage(): Observable<any> {
+    return this.storageItem.asObservable();
   }
 
   getUsuario(id: number) {
