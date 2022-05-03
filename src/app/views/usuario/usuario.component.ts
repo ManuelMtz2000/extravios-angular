@@ -75,7 +75,7 @@ export class UsuarioComponent implements OnInit {
 
    guardarDatos(){
      const formData = new FormData();
-     if(this.usuarioForm.datosContacto.length > 0) {
+     if(this.datos.length > 0) {
       formData.append('datos', this.datos);
     } else {
       formData.append('datos', ' ');
@@ -112,6 +112,9 @@ export class UsuarioComponent implements OnInit {
        formData.append('_method', 'PUT');
        this.userService.nuevaContra(formData, this.usuario.id).subscribe((data: any) => {
          alert('Modificado');
+         this.contraOld = '';
+         this.contraNew = '';
+         this.contraNew2 = '';
        }, (error) => {
          if(error instanceof HttpErrorResponse){
            if(error.status === 402){

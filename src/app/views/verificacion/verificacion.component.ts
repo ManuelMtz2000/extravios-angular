@@ -27,7 +27,7 @@ export class VerificacionComponent implements OnInit {
       this.usuario = data;
       this.usuariosService.deleteUserToken();
       this.usuariosService.setToken('user', JSON.stringify(this.usuario));
-      this.router.navigate(['tabs/inicio']);
+      this.router.navigate(['/app/tabs/inicio']);
     }, (error) => {
       alert('Error');
       console.log(error);

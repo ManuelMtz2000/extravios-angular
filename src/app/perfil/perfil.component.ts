@@ -25,7 +25,7 @@ export class PerfilComponent implements OnInit {
 
   logout(){
     this.userService.deleteToken();
-    this.router.navigate(['entrar']);
+    this.router.navigateByUrl('/entrar', { replaceUrl: true });
   }
 
 }

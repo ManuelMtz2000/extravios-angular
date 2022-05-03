@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.password = '';
         this.credenciales = false;
         if(this.sesion.user.verificado !== null){
-            this.router.navigate(['tabs/inicio']);
+            this.router.navigate(['app/tabs/inicio']);
         } else {
             this.router.navigate(['/registro/verificar']);
         }
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
                    this.sesion = data2;
                    this.userService.setToken('sesion', this.sesion.token);
                    this.userService.setToken('user', JSON.stringify(this.sesion.user));
-                   this.router.navigate(['tabs/inicio']);
+                   this.router.navigate(['app/tabs/inicio']);
                    });
                  }
                });

@@ -17,11 +17,16 @@ import { RegistroEstudianteComponent } from './views/registro-estudiante/registr
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    redirectTo: '/entrar',
+    pathMatch: 'full',
   },
   {
     path: 'entrar',
     component: LoginComponent
+  },
+  {
+    path: 'app',
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: 'registro',
@@ -36,7 +41,7 @@ const routes: Routes = [
     component: RegistroEstudianteComponent
   },
   {
-    path: 'tabs/inicio/reportar/:id',
+    path: 'app/tabs/inicio/reportar/:id',
     component: ReportesComponent
   },
   {
@@ -44,19 +49,19 @@ const routes: Routes = [
     component: BusquedaComponent
   },
   {
-    path: 'tabs/perfil/usuario/:id',
+    path: 'app/tabs/perfil/usuario/:id',
     component: UsuarioComponent
   },
   {
-    path: 'tabs/perfil/acerca',
+    path: 'app/tabs/perfil/acerca',
     component: AcercaComponent
   },
   {
-    path: 'tabs/perfil/ayuda',
+    path: 'app/tabs/perfil/ayuda',
     component: AyudaComponent
   },
   {
-    path: 'tabs/perfil/publicaciones',
+    path: 'app/tabs/perfil/publicaciones',
     component: PublicacionesComponent
   }
 ];

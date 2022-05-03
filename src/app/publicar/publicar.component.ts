@@ -154,7 +154,7 @@ export class PublicarComponent implements OnInit {
       this.e4 = '';
       this.e5 = '';
       this.imagen = '';
-      this.router.navigate(['tabs/inicio']);
+      this.router.navigate(['app/tabs/inicio']);
       this.ngOnInit();
     }, (error) => {
       if(error instanceof HttpErrorResponse) {
