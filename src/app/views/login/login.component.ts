@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   xhttp = new XMLHttpRequest();
   constructor(private userService: UsuariosService, private router: Router) {
     if(this.userService.getToken('sesion') && this.userService.getToken('user')){
-      this.router.navigate(['tabs/inicio']);
+      this.router.navigate(['app/tabs/inicio']);
     }
    }
 

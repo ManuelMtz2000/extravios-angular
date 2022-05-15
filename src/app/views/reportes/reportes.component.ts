@@ -48,7 +48,9 @@ export class ReportesComponent implements OnInit {
     this.publicacionesService.reportarPublicacion(formData).subscribe((data: any) => {
       this.show = false;
       alert('Reporte elaborado con correctamente.');
-      this.router.navigate(['tabs/inicio']);
+      this.router.navigate(['app/tabs/inicio']);
+    }, (error) => {
+      alert('Ocurrio un error en el reporte, es posible que sea debido a que ya reporto la publicación o no esta conectado a internet.');
     });
   }
 
